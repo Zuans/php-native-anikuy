@@ -5,6 +5,7 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="<?= View::request('Home/index')?>">Anime</a></li>
                 <li><a href="<?= View::request('Manga/index')?>">Manga</a> </li>
+                <?php if(isset($_SESSION['user_id'])):  ?>
                 <li class="dropdown">
                     <a href="" class="dropdown-a">Profile</a>
                     <div class="dropdown-content">
@@ -12,6 +13,7 @@
                         <a href="">Love list</a>
                     </div>
                 </li>
+                <?php endif; ?>
             </ul>
         </div>
         <button id="btn-hamburger" class="btn-hamburger">
