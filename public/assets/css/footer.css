@@ -1,0 +1,160 @@
+@font-face {
+    font-family : Poppins;
+    src : url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+}
+
+
+
+
+/* Footer */
+
+footer {
+    width: 100%;
+    margin-top: 4rem;
+    font-family : Poppins, sans-serif;
+    position: relative;
+    background-color : #149494;
+    bottom : 0;
+    display: flex;
+    flex-direction: row-reverse;
+    align-content: center;
+    box-sizing: border-box;
+    padding : 3vw 3vw;
+    padding-bottom: 0;
+    color : white;
+}
+
+footer a {
+    font-weight : 700;
+    color : #095764;
+    transform: scale(1);
+    transition: transform .2s ease;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color : #f3f3f3;
+    transform: scale(1.2);
+}
+
+
+footer .sosmed {
+    padding : 1.5rem 1rem;
+    background-color : transparent;
+    
+}
+
+footer .sosmed ul  {
+    list-style: none;
+}
+
+
+
+footer .sosmed ul li a i{
+    font-size : 3em;
+    color : white;
+    margin-bottom: 2.5rem;
+}
+
+
+footer .nav {
+    flex : 1;
+    align-content: center;
+    box-sizing: border-box;
+    align-self: center;
+    padding : 0 3vw;
+}
+
+footer .nav ul {
+    display: block;
+    list-style: none;
+    color : white;
+    padding: 1.5rem 1rem;
+    
+}
+
+footer .nav ul li {
+    text-align: left;
+    display: block;
+    font-size: 24px;
+    margin-bottom: 1rem;
+}
+
+
+
+
+
+footer .brand {
+    flex : 6; 
+    padding: 1.5rem 0;
+    text-align: left;
+    line-height: 1.8;
+    align-self: center;
+}
+
+footer .brand p {
+    margin-bottom : .5rem;
+} 
+
+footer .brand input {
+    display: block;
+    box-sizing: border-box;
+    width: 18em;
+    border : none;
+    padding : .6rem 1.2rem;
+    outline : none;
+    background-color : teal;
+    color : white;
+    border-radius : 5px;
+}
+
+
+
+
+@media only screen and (max-width : 768px ) {
+
+    footer {
+        display: inline-block;
+    }
+
+
+    footer .nav ul {
+        display: inline-block;
+        padding: 0;
+    }
+
+    footer .nav ul li {
+        display : inline-block;
+        margin-left : 1rem;
+    }
+
+    footer .sosmed {
+        background-color: transparent;
+    }
+
+    footer .sosmed ul {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        padding : 1rem 0rem;
+        box-sizing: border-box;
+    }
+
+    footer .sosmed ul li {
+        display: inline-block;
+    }
+
+    footer .sosmed ul li a {
+        font-size : 1.5em;
+    }
+
+    footer .sosmed ul li:nth-child(2) {
+        padding : 0 2rem;
+    }
+
+    footer .brand {
+        padding-left: 2rem;
+    }
+
+
+}

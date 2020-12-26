@@ -1,0 +1,242 @@
+@font-face {
+    font-family : boldPoppins;
+    src : url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+}
+
+
+
+* {
+    margin : 0;
+    padding : 0;
+    font-family : 'Poppins', sans-serif;
+}
+
+body {
+    box-sizing : border-box;
+}
+
+a {
+    text-decoration: none;
+    color: #303030;
+}
+
+body {
+    position: relative;
+}
+
+
+nav {
+    width: 100%;
+    padding-bottom: .5rem;
+    background-color: #149494;
+}
+
+nav .nav-menu .nav-title,
+nav .nav-menu ul li a {
+    color : white;
+}
+
+.nav-title {
+    font-size : 26px;
+    padding :.6rem 1rem;
+    color: #303030;
+}
+
+.nav-menu ul li a {
+    font-size : 20px;
+    font-weight : 500;
+}
+
+
+.btn-auth-login,
+.btn-auth-register,
+.btn-auth-logout {
+    background-color : #05b348;
+    cursor : pointer;
+    outline: none;
+    padding : .7rem 1.5rem;
+    font-weight: 500;
+    border : none;
+    border-radius : .7rem;
+    color : white;
+    transform: scale(1);
+    margin: .5rem .5rem;
+    transition: transform .5s ease-out;
+}
+
+.btn-auth-register {
+    background-color : #056db3;
+}
+
+.btn-auth-logout {
+    background-color : #bd0000;
+}
+
+.btn-auth-login:hover,
+.btn-auth-register:hover,
+.btn-auth-logout:hover {
+    transform : scale(1.15);
+} 
+
+
+.greet-user {
+    display: inline-block;
+    font-size : 20px;
+}
+
+
+
+
+
+
+/* Desktop Class */
+
+.nav-desktop,
+.nav-tablet {
+    display : flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    color : white;
+}
+
+.nav-desktop h1,
+.nav-tablet h1 {
+    display: inline-block;
+}
+
+
+.nav-desktop ul,
+.nav-tablet ul  {
+    display : inline-block;
+    list-style-type: none;
+}
+
+.nav-desktop ul li, 
+.nav-tablet ul li  {
+    display  : inline-block;
+    padding : .5rem;
+}
+
+
+.nav-desktop  .btn-hamburger,
+.nav-tablet  .btn-hamburger {
+    display: none;
+    visibility: none;
+}
+
+
+.nav-desktop .nav-auth,
+.nav-tablet .nav-auth {
+    padding : .6rem 1rem;
+    display: inline-block;
+}
+
+
+/* MOBILE CLASS */
+
+.nav-mobile {
+    position: relative;
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 80px;
+}
+
+.active {
+    min-height: 250px;
+    padding-bottom : 1rem;
+}
+
+
+.nav-mobile .nav-menu .nav-title {
+    font-size : 36px;
+    margin-top: -0.2rem;
+    height: 40px;
+    transition: all .7s ease-in;
+}
+
+
+
+.nav-mobile .nav-menu ul,
+.nav-mobile .nav-auth {
+    display: none;
+    transform: translateY(-300px);
+    transition: all .4s ease-out;
+}
+.nav-mobile .nav-auth {
+    flex-basis: 100%;
+}
+
+.nav-mobile .nav-menu ul {
+    display: inline-block;
+    margin-left: 2rem;
+    list-style-type: none;
+}
+
+.nav-mobile .nav-auth button {
+    display: block;
+}
+
+/* ACTIVE CLASS */
+
+
+.active .nav-menu {
+    min-height: 100px;
+}
+
+.active .nav-menu .nav-title  {
+    font-size : 28px;
+    margin : .3rem .3rem 0 0;
+}
+
+.active .nav-menu ul,
+.active .nav-auth
+{
+    opacity: 1;
+    transform : translateY(0);
+}
+
+.active .nav-menu ul li a {
+    color: white;
+}
+
+
+.active .nav-auth {
+    margin-left : 15px;
+    display: inline-flex;
+}
+
+
+
+
+/* BURGER BUTTON */
+
+.nav-mobile .btn-hamburger {
+    position: relative;
+    top: 10;
+    right: 10;
+    background-color : #0083c0;
+    width: 60px;
+    height: 60px;
+    padding: .7rem;
+    border : none;
+    outline : none;
+    cursor: pointer;
+    margin : .5rem .5rem 0 0;
+    transition: transform .5s ease;
+}
+
+
+.nav-mobile .btn-hamburger div {
+    position : relative;
+    width: 100%;
+    align-items: center;
+    height: 4px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    margin-bottom: .7rem;
+}
