@@ -47,6 +47,36 @@ nav .nav-menu ul li a {
     font-weight : 500;
 }
 
+.nav-menu ul .dropdown {
+    position : relative;
+}
+
+.nav-menu ul .dropdown .dropdown-a:hover ~ .dropdown-content {
+    display : block;
+    z-index: 1;
+}
+
+
+
+.nav-menu ul .dropdown .dropdown-content {
+    display : none;
+    position : absolute;
+    background-color : teal;
+    box-shadow: 0px 0px 7px 0px rgba(53, 53, 53, 0.774);
+    margin-top : .5rem;
+}
+
+.nav-menu ul .dropdown:hover .dropdown-content {
+    display: block;
+    z-index : 1;
+    min-width: 150px;
+}
+
+
+.nav-menu ul .dropdown .dropdown-content a {
+    display: block;
+    padding : 10px 15px;
+}
 
 .btn-auth-login,
 .btn-auth-register,
@@ -142,7 +172,7 @@ nav .nav-menu ul li a {
     align-items: flex-start;
     flex-wrap: wrap;
     justify-content: space-between;
-    height: 80px;
+    min-height: 50px;
 }
 
 .active {
@@ -150,6 +180,10 @@ nav .nav-menu ul li a {
     padding-bottom : 1rem;
 }
 
+
+.nav-mobile .nav-menu {
+    height: 50px;
+}
 
 .nav-mobile .nav-menu .nav-title {
     font-size : 36px;
@@ -180,11 +214,20 @@ nav .nav-menu ul li a {
     display: block;
 }
 
+.nav-mobile .nav-menu .nav-list .dropdown:hover .dropdown-content {
+    position: relative;
+    display : block;
+}
+
+.nav-mobile .nav-menu .nav-list .dropdown:hover .dropdown-content a {
+    display: inline-block;
+}
+
 /* ACTIVE CLASS */
 
 
 .active .nav-menu {
-    min-height: 100px;
+    height: auto;
 }
 
 .active .nav-menu .nav-title  {

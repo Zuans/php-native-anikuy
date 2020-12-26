@@ -5,6 +5,13 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="<?= View::request('Home/index')?>">Anime</a></li>
                 <li><a href="<?= View::request('Manga/index')?>">Manga</a> </li>
+                <li class="dropdown">
+                    <a href="" class="dropdown-a">Profile</a>
+                    <div class="dropdown-content">
+                        <a href="">My Account</a>
+                        <a href="">Love list</a>
+                    </div>
+                </li>
             </ul>
         </div>
         <button id="btn-hamburger" class="btn-hamburger">
