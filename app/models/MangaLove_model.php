@@ -36,6 +36,13 @@
             $this->db->single();
             return $this->db->rowCount();
         }
+
+        public function getByUserId($userId) {
+            $query = "SELECT * FROM $this->table WHERE user_id = :user_id";
+            $this->db->query($query);
+            $this->db->bind(':user_id',$userId);
+            return $this->db->resultSet();
+        }
     
     }
 

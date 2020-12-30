@@ -9,8 +9,8 @@
                 <li class="dropdown">
                     <a href="" class="dropdown-a">Profile</a>
                     <div class="dropdown-content">
-                        <a href="">My Account</a>
-                        <a href="">Love list</a>
+                        <a href="<?= View::request('Profile/info')?>">My Info</a>
+                        <a href="<?= View::request('Profile/loveList'); ?>">Love list</a>
                     </div>
                 </li>
                 <?php endif; ?>

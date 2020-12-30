@@ -27,11 +27,12 @@ class Helper {
         return json_encode($err) ;
     }
 
-    public static function setSuccess($msg = '',$code = 200) {
+    public static function setSuccess($msg = '',$data = null, $code = 200) {
         $success = [
             'status' => 'success',
             'code' => $code,
             'msg' => $msg,
+            'data' => $data,
         ];
         return json_encode($success) ;
     }

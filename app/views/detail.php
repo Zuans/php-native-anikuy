@@ -5,7 +5,7 @@
 
 
 <!-- JS Declare -->
-<? View::setJS('detail');?>
+<?= View::setJS('detail');?>
 
 
 <!-- Build Template -->
@@ -28,6 +28,7 @@
                 <li>Status: <?= $animeDetail['status']?></li>
                 <li>Aired: <p class="aired-date" ><?= $animeDetail['aired']?></p></li>
                 <li>Episode Count: <?= $animeDetail['epsCount']?></li>
+                <li>Duration : <?= $animeDetail['epsLength']?></li>
             </ul>
         </div>
         <div class="anime-content">

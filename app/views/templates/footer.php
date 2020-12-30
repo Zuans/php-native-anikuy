@@ -1,6 +1,6 @@
 <footer>
 <div class="brand">
-    <h1 class="footer title">AniKuy</h1>
+    <h1 class="footer">AniKuy</h1>
     <h3>Cari anime saat anda gabut</h3>
     <p>Created by <a href="https://web.facebook.com/juan.ewaldo.351" target="_blank" >Zuans</a></p>
     <label for="input-subs">Subscribe Me</label>

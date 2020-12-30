@@ -4,23 +4,30 @@
 
 // Home and search result
 Route::get('Home/index',['index','id']);
-// Anime
+
+// ANIME ROUTE
 Route::post('Anime/search');
 Route::get('Anime/show',['id']);
 Route::post('Anime/addLove');
 Route::post('Anime/removeLove');
-// Manga
+
+// MANGA ROUTE
 Route::get('Manga/index');
 Route::post('Manga/search');
 Route::get('Manga/show',['id']);
 Route::post('Manga/addLove');
 Route::post('Manga/removeLove');
-// Auth
+
+//  AUTH ROUTE
 Route::get('Auth/indexLogin');
 Route::post('Auth/login',['status']);
 Route::get('Auth/indexRegister');
 Route::post('Auth/register');
 Route::get('Auth/logout');
+
+// PROFILE ROUTE
+Route::get('Profile/info');
+Route::get('Profile/loveList');
 
 class Route {
 

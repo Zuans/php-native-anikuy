@@ -40,6 +40,6 @@
             Don't have an account yet ?
             <a href="<?= View::request("Auth/indexRegister"); ?>"> <strong>Sign Up</strong></a>
         </p>
-        <p class="mark" >Made with by <i class="fas fa-heart"></i> <a href="">Zuans</a></p>
+        <p class="mark" >Made with  <i class="fas fa-heart"></i>  by <a href="">Zuans</a></p>
     </div>
 </div>

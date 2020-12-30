@@ -17,6 +17,7 @@ class Manga extends Controller {
         $url = ApiRequest::setUrlApi($_POST,'manga');
         $popularManga = self::popularManga();
         $resultManga = ApiRequest::httpRequest('GET',$url);
+        $resultManga = json_decode($resultManga)->data;
         $resultManga = self::set($resultManga);
         $this->view('home',[
             'popularManga' => $popularManga,
@@ -31,7 +32,8 @@ class Manga extends Controller {
         $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
         $url = ApiRequest::setUrlApi($params,'manga');
         $detailManga = ApiRequest::httpRequest('GET',$url);
-        $detailManga = self::set($detailManga);
+        $allManga = json_decode($detailManga)->data;
+        $detailManga = self::set($allManga);
         if($userId) {
             $mangaLove = new MangaLove_model;
             $isLoved = $mangaLove->isLoved($userId,$id);
@@ -80,7 +82,7 @@ class Manga extends Controller {
         // Check user login
         $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
         if(!$userId) {
-            echo Helper::setError('You must be login',500);
+            echo Helper::setError('You must be login',401);
             return;
         }
 
@@ -107,6 +109,7 @@ class Manga extends Controller {
     public static function popularManga() {
         $url =  BASE_API_URL . '/manga?sort=-userCount&page[limit]=5';
         $allManga = ApiRequest::httpRequest('GET',$url);
+        $allManga = json_decode($allManga)->data;
         $allManga = self::set($allManga);
         return $allManga;
     }
@@ -114,13 +117,55 @@ class Manga extends Controller {
     public static function currentManga() {
         $url = BASE_API_URL . '/manga?filter[status]=current&sort=-averageRating';
         $currentManga = ApiRequest::httpRequest('GET',$url);
+        $currentManga = json_decode($currentManga)->data;
         $currentManga = self::set($currentManga);
         return $currentManga;
     }
 
 
+    public static function setMangaLove($allId) {
+        $allManga  = [];
+        foreach($allId as $key => $manga ) {
+            $param = [
+                'id' => $manga['manga_id'],
+            ];
+            $url = ApiRequest::setUrlApi($param,'manga');
+            $response = ApiRequest::httpRequest('GET',$url);
+            $response = json_decode($response)->data;
+            $manga = Manga::set($response);
+            $allManga[] = $manga;
+        }
+        $result = self::splitManga($allManga);
+        return $result;
+    }
+
+    public static function splitManga($allManga) {
+        $result = [];
+        if(count($allManga) > 3 ){
+            $splitManga = [];
+            foreach($allManga as $key => $manga ) {
+                // each factorial of three push split manga
+                if( $key % 3 == 0 && $key != 0 ) {
+                    // Push to result and clear
+                    $result[] = $splitManga;
+                    $splitManga = [];
+                    $splitManga[] = $manga;
+                    // If last index is factorial of 3
+                    count($allManga) == ( $key + 1 ) ? $result[] = $splitManga : null;
+                } else if(count($allManga) == ( $key + 1 )) {
+                    $splitManga[] = $anime;
+                    $result[] = $splitmanga;
+                } else {
+                    $splitManga[] = $manga;
+                }
+            }
+        }else {
+            $result[] = $allManga;
+        }
+        return $result;
+    }
+
     public static function set($allManga) {
-        $allManga = json_decode($allManga)->data;
         $baseImg = BASE_URL . 'assets/img/card-1.png';
         if(count($allManga) > 1 ) {
             $resultManga = [];
