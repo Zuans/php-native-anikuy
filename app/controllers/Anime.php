@@ -5,6 +5,23 @@
 
 
 class Anime extends Controller {
+    public $allMonth = [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'June',
+        'July',
+        'Aug',
+        'Sept',
+        'Oct',
+        'Nov',
+        'Dec',
+    ];
+
+
+
     public function index() {
         $this->view('home');
     }
@@ -104,8 +121,15 @@ class Anime extends Controller {
                 'id' => $value['anime_id'],
             ];
             $url = ApiRequest::setUrlApi($param,'anime');
-            $result = ApiRequest::httpRequest('GET',$url);
-            $result = json_decode($result)->data;
+            try {
+                $result = ApiRequest::httpRequest('GET',$url);
+                property_exists($result,'data');
+                $result = json_decode($result)->data;
+            }catch(Exception $e) {
+                $err = Helper::setError($e->getMessage(),400);
+                var_dump($err);
+                return $err;
+            }
             $anime = self::set($result);
             $allAnime[] = $anime;
         }
@@ -156,10 +180,11 @@ class Anime extends Controller {
                     'ageRating' => $value->attributes->ageRating ?: '-',
                     'user' => $value->attributes->userCount,
                     'status' => $value->attributes->status,
-                    'aired' => $value->attributes->startDate?: '?' . 'to' . $value->attributes->endDate?: '?',
+                    'aired' => self::setAired($value->attributes->startDate,$value->attributes->endDate),
                     'epsCount' => $value->attributes->episodeCount ?: '?',
                     'epsLength' => self::setEpsLen($value->attributes->showType,$value->attributes->episodeLength),
                     'imgPoster' => $value->attributes->posterImage ? $value->attributes->posterImage->small  : $baseImg,
+                    'imgPosterFl' => $value->attributes->posterImage ? $value->attributes->posterImage->large  : $baseImg,
                     'imgCover' => $value->attributes->coverImage ? $value->attributes->coverImage->original : $baseImg,
                 ];
                 $allAnime[$i] = $anime;
@@ -178,10 +203,11 @@ class Anime extends Controller {
                 'ageRating' => $animes[0]->attributes->ageRating ?: '-',
                 'user' => $animes[0]->attributes->userCount,
                 'status' => $animes[0]->attributes->status,
-                'aired' => $animes[0]->attributes->startDate . " ". 'to' . " " . $animes[0]->attributes->endDate?: '?',
+                'aired' => self::setAired($animes[0]->attributes->startDate,$animes[0]->attributes->endDate),
                 'epsCount' => $animes[0]->attributes->episodeCount ?: '?' ,
                 'epsLength' => self::setEpsLen($animes[0]->attributes->showType,$animes[0]->attributes->episodeLength),
                 'imgPoster' => $animes[0]->attributes->posterImage ? $animes[0]->attributes->posterImage->small  : $baseImg,
+                'imgPosterFl' => $animes[0]->attributes->posterImage ? $animes[0]->attributes->posterImage->large  : $baseImg,
                 'imgCover' => $animes[0]->attributes->coverImage ? $animes[0]->attributes->coverImage->original :  $baseImg,
             ];
             return $anime;
@@ -227,6 +253,11 @@ class Anime extends Controller {
                                 ( isset($lang->jp) ? $lang->$jp : 
                                     ( isset($lang->en_cn) ? $lang->en_cn : $lang->cn))));
         return $resultLang;
+    }
+
+    public static function setAired($strt = '?',$end = '?') {
+        if($end == null ) $end = '???';
+        return $strt . ' ' . 'to' . ' ' . $end;
     }
 
 

@@ -1,0 +1,138 @@
+
+body {
+    background-color  : #fefefe;
+}
+
+
+#profile-body {
+    margin-top : 2rem;
+    min-height: 90vh;
+    width: 100%;
+    display : flex;
+    background-color : #fefefe;
+}
+
+#profile-body > div {
+    padding : 2rem;
+}
+
+#profile-body .info-profile {
+    flex : 25%;
+    background-color :#5120a0;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.6);
+    /* 713dc5 */
+}
+
+#profile-body .info-profile h1 {
+    text-align : center;
+    margin-bottom: 1rem;
+    display: block;
+    color : white;
+    border-radius : 7px; 
+    font-size : 36px;
+}
+
+#profile-body .info-profile hr {
+    width : 100%;
+}
+
+#profile-body .info-profile ul {
+    list-style-type : none;
+    text-align: left;
+}
+
+#profile-body .info-profile ul li {
+    margin : 2rem;
+    color : white;
+    font-size : 20px;
+}
+
+
+#profile-body .main-profile {
+    flex : 100%;
+    background-color : #327cb8;
+    margin-left : 3rem;
+}
+
+.title {
+    text-align: center;
+}
+
+#profile-body .main-profile h1 {
+    margin-bottom: 1rem;
+    color : white;
+    font-size : 36px;
+}
+
+#profile-body .main-profile hr {
+    width : 10rem;
+    margin-bottom: 1rem;
+}
+
+
+.user-info {
+    display: flex;
+    align-items: flex-end;
+}
+
+.user-info > div {
+    padding : .7rem 1.4rem;
+    background-color : #5826a8;
+    border-radius: 1rem;
+    margin-top : 1.25rem ;
+    margin-right: 2.5rem ;
+}
+
+#profile-body .user-info > div span {
+    font-size : 20px;
+    color : white;
+    vertical-align: middle;
+}
+
+.form-wrapper {
+    padding : 2rem 0rem;
+}
+
+.form-wrapper .form-change-profile {
+    display: flex;
+    width : 80%;
+    flex-direction: column;
+    justify-content: stretch;
+}
+
+
+.form-wrapper .input-group {
+    margin : 1.25rem 0rem;
+    display: flex;
+}
+
+.form-wrapper .input-group label{
+    flex : 35%;
+    color : #fcfcfc;
+    font-size : 26px;
+}
+
+.form-wrapper .input-group input {
+    flex : 65%;
+    margin-left: 2rem;
+    border : none;
+    outline : none;
+    background-color : #e7e7e7;
+    color : rgb(31, 31, 31);
+    padding : .3rem 1rem;
+    border-radius : 2rem;
+}
+
+
+.form-wrapper input[type="submit"] {
+    width: 35%;
+    margin : 1.25rem 0rem;
+    padding : .6rem;
+    font-size : 20px;
+    border-radius : 2rem;
+    border : none;
+    outline : none;
+    color : #205e91;
+    cursor : pointer;
+    font-weight : 700;
+}

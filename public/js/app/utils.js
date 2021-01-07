@@ -24,6 +24,52 @@ const setFormData = (data) => {
     return formData;
 }
 
+
+const animangaRequest = async (method,url,data) => {
+    if(method == "PUT") {
+        try {
+            const anime = await fetch(url,{
+                method : 'PUT',
+                headers : {
+                    'Content-Type' : 'application/json',
+                },
+                body : JSON.stringify(data),
+            });
+            return anime.json();
+        } catch(err) {
+            console.log(err);
+        }
+    } else if(method == 'POST') {
+        try {
+            const anime = await fetch(url,{
+                method : 'GET',
+                headers : {
+                    'Content-Type' : 'application/vnd.api+json',
+                },
+                body : JSON.stringify(data),
+            });
+            return await anime.json();
+        } catch(err) {
+            console.log(err)
+        }
+    } else {
+        try {
+            const anime = await fetch(url,{
+                method : 'GET',
+                headers : {
+                    'Accept': 'application/vnd.api+json',
+                    'Content-Type': 'application/vnd.api+json'
+                }
+            });
+            let result = await anime.json();
+            return result.data;
+        } catch(err) {
+            console.log(err);
+        }
+    }
+}
+
+
 const httpRequest = async (method,url,data) => {
     if(method == "PUT") {
         try {
@@ -51,7 +97,6 @@ const httpRequest = async (method,url,data) => {
                 body : JSON.stringify(data),
             });
             let result = await response.json();
-            console.log(result);
             return result;
         } catch(err) {
             console.log(err)
@@ -72,98 +117,17 @@ const httpRequest = async (method,url,data) => {
     }
 }
 
-const animangaRequest = async (method,url,data) => {
-    if(method == "PUT") {
-        try {
-            const anime = await fetch(url,{
-                method : 'PUT',
-                headers : {
-                    'Content-Type' : 'application/json',
-                },
-                body : JSON.stringify(data),
-            });
-            return anime.json();
-        } catch(err) {
-            console.log(err);
-        }
-    } else if(method == 'POST') {
-        try {
-            const anime = await fetch(url,{
-                method : 'GET',
-                headers : {
-                    'Content-Type' : 'application/vnd.api+json',
-                },
-                body : JSON.stringify(data),
-            });
-            return anime.json();
-        } catch(err) {
-            console.log(err)
-        }
-    } else {
-        try {
-            const anime = await fetch(url,{
-                method : 'GET',
-                headers : {
-                    'Accept': 'application/vnd.api+json',
-                    'Content-Type': 'application/vnd.api+json'
-                }
-            });
-            console.log(anime);
-            let result = await anime.json();
-            return result.data;
-        } catch(err) {
-            console.log(err);
-        }
-    }
-}
 
-const setAnime = (animes) => {
-    const urlDetail = `${module.constant.baseUrl}/Anime/show`;
-    const allAnime = animes.map(anime => {
-        const synopsis = anime.attributes.synopsis ? module.utils.sliceSynopsis(anime.attributes.synopsis) : "This anime doesn't have synopsis" ;
-        const language = module.utils.setLang(anime.attributes.titles);
-        return `<div class="card">
-        <div class="img-wrapper">
-            <img src="${ anime.attributes.coverImage ? anime.attributes.coverImage.original : 'assets/img/card-1.png'}" alt="${language}">
-            <i class="fas fa-star icons icon-rating "><span>${anime.attributes.averageRating}</span></i>
-            <i class="fas fa-user icons icon-user"><span>${anime.attributes.userCount}</span></i>
-            <i class="fas fa-tv icons icon-eps "><span>${anime.attributes.episodeLength ? anime.attributes.episodeLength : '?' }</span></i>
-        </div>
-        <div class="content-wrapper" >
-            <h1>${language}</h1>
-            <h4 class="anime-status">Status&nbsp;${anime.attributes.status}</h4>
-            <span class="anime-synopsis" >${synopsis}</span>
-            <a href="${urlDetail}/${anime.id}" class="btn-details" >Details</a>
-        </div>
-    </div>`
+const clearCardList = (parentEl,className) => {
+    const parent = document.getElementById(parentEl);
+    const childs = parent.children;
+    [...childs].forEach(chld => {
+        if(chld.classList.contains(className)) {
+            chld.remove();
+        }
     });
-    return allAnime;
-}
-
-const setManga = (allManga) => {
-    const urlDetail = module.constant.baseURL + 'Manga/show';
-    console.log(module.constant.base)
-    const resultManga = allManga.map( manga => {
-        const synopsis = manga.attributes.synopsis ? sliceSynopsis(manga.attributes.synopsis) : "This manga doesn't synopsis";
-        const title = setLang(manga.attributes.titles);
-        return `<div class="card">
-        <div class="img-wrapper">
-            <img src="${ manga.attributes.coverImage ? manga.attributes.coverImage.original : 'assets/img/card-1.png'}" alt="${title}">
-            <i class="fas fa-star icons icon-rating "><span>${manga.attributes.averageRating}</span></i>
-            <i class="fas fa-user icons icon-user"><span>${manga.attributes.userCount}</span></i>
-            <i class="fas fa-tv icons icon-eps "><span>${manga.attributes.episodeLength ? manga.attributes.episodeLength : '?' }</span></i>
-        </div>
-        <div class="content-wrapper" >
-            <h1>${title}</h1>
-            <h4 class="manga-status">Status&nbsp;${manga.attributes.status}</h4>
-            <span class="manga-synopsis" >${synopsis}</span>
-            <a href="${urlDetail}/${manga.id}" class="btn-details" >Details</a>
-        </div>
-    </div>`
-    });
-    console.log(resultManga);
-    return resultManga;
-}
+    return;
+};
 
 
 const sliceSynopsis = (synopsis) => {
@@ -189,7 +153,26 @@ const setLang = (lang) => {
 }
 
 
-// DONT FORGET MAKE SET MANGA FUNCTION !!!!!!!!
+const setEpsLen = (length,count) => {
+    let duration;
+    if(length > 60 ) {
+        const hours = Math.floor(length / 60 );
+        const minutes = length - ( hours  * 60 );
+        duration = `${hours} and ${minutes}`;
+    } else {
+        duration = `${length} min`;
+    }
+    if(count != 1) {
+        duration += ` per eps`;
+    } 
+    return duration;
+}
+
+const setAired = (startDate,endDate) => {
+    const stDate = startDate ? startDate : '?';
+    const edDate = endDate ? endDate : '?';
+    return `${stDate} to ${edDate}`;
+}
 
 
 
@@ -199,11 +182,12 @@ const setLang = (lang) => {
 define({
     classNavbar,
     setFormData,
-    httpRequest,
     animangaRequest,
-    setAnime,
-    setManga,
+    httpRequest,
+    clearCardList,
     sliceSynopsis,
-    setLang
+    setLang,
+    setEpsLen,
+    setAired
 })
 

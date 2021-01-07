@@ -1,0 +1,305 @@
+
+* {
+    padding : 0;
+    margin : 0;
+    box-sizing : border-box;
+}
+
+
+
+
+#body-love-list {
+    min-height: 90vh;
+    margin : 1rem 2.5rem;
+    padding : 2rem;
+}
+
+.body-title {
+    color : #fefefe;
+    text-align : center;
+    display: block;
+    font-size : 36px;
+    background-color : #303030;
+    padding : .5rem;
+    margin : 0rem 2rem;
+    border-radius : .7rem;
+}
+
+.title-type {
+    display: block;
+    text-align : center;
+    font-size : 36px;
+    margin-top : 2rem;
+}
+
+.card-list-love {
+    padding : 2rem;
+    display : grid;
+    grid-template-columns: minmax(80px,700px) minmax(80px,700px) minmax(120px,350px);
+    grid-template-rows:  minmax(100px,350px) minmax(100px,350px) minmax(0px,450px);
+    grid-template-areas: "first first second"
+                         "first first second"
+                         "third third third";
+    grid-gap : 2rem;
+} 
+
+.card-list-love > div {
+    padding : 2rem;
+    border-radius: 1rem;
+    box-shadow : 0px 3px 9px rgba(22, 22, 22, 0.7);
+    box-sizing: border-box;
+    position: relative;
+    background-color:  #2d97b8;
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.7);
+    /* rgb(7, 151, 156) */
+}
+
+.card-list-love > div  .animanga-info .detail {
+    position: relative;
+}
+
+.card-list-love > div .animanga-info .detail ul {
+    list-style-type: none;
+}
+
+.card-list-love > div .animanga-info .detail ul li {
+    margin : 1rem;
+    font-size : 16px;
+    font-weight : 700;
+}
+
+.card-list-love > div .animanga-info .detail ul .action  {
+    display: flex;
+    width: 100%;
+    margin-top : 1rem;
+}
+
+.card-list-love > div .animanga-info .detail ul .action button {
+    padding : .4rem 1rem;
+    margin-right : .5rem;
+    color : white;
+    background-color : #2d97b8;
+    cursor :pointer;
+    border : none;
+    outline : none;
+    font-size : 18px;
+    transform : translateY(0);
+    transition : transform .5s ease;
+    box-shadow: 0px 1px 5px rgba(29, 29, 29, 0.603);
+}
+
+.card-list-love > div .animanga-info .detail ul li .action button:hover {
+    transform : translateY(4px);
+}
+
+
+.card-list-love .first {
+    box-sizing: border-box;
+    grid-area: first;
+    position: relative;
+}
+
+.card-list-love .first h1 {
+    display: block;
+    text-align: center;
+    font-size : 28px;
+}
+
+
+.card-list-love .first  .animanga-info {
+    height : 85%;
+    justify-content: center;
+    margin-top : 1rem;
+    border-radius : 1rem;
+    align-content: center;
+}
+
+.card-list-love .first .animanga-info .img-wrapper {
+    position: relative;
+    height: 100%;
+}
+
+.card-list-love .first  .animanga-info .img-wrapper  img {
+    width : 100%;
+    height: 100%;
+    position : absolute;
+     ;
+    z-index : 1;
+}
+
+.card-list-love .first  .animanga-info .detail {
+    height: 100%;
+    background-color: transparent;
+    background-image: linear-gradient(to bottom,rgba(22, 22, 22, 0.774), rgba(22, 22, 22, 0.603) ,rgba(233, 233, 233, 0.363));
+    padding : 1rem;
+    color : rgb(235, 235, 235);
+    box-sizing: border-box;
+    z-index: 99;
+}
+
+.card-list-love .first  .animanga-info .detail ul li {
+    font-size : 20px;
+}
+
+
+.card-list-love .second {
+    grid-area: second;
+
+}
+
+.card-list-love .second .title {
+    text-align: center;
+    font-size : 28px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.card-list-love .second .animanga-info {
+    display: flex;
+    flex-direction: column;
+    height : 85%;
+    margin-top: 1rem;
+    border-radius: .7rem;
+    background-color : rgb(31, 31, 31);
+    color : white;
+}
+
+.card-list-love .second .animanga-info .detail {
+    margin : 0rem 1rem;
+}
+
+.card-list-love .second .animanga-info .detail ul li {
+    text-align: left;
+}
+
+.card-list-love .second .animanga-info img {
+    width : 100%;
+    max-height: 35%;
+    border-top-left-radius : .7rem;
+    border-top-right-radius : .7rem;
+}
+
+
+
+.card-list-love .third {
+    grid-area: third;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    position: relative;
+    
+}
+
+
+.card-list-love .third .title {
+    flex-basis: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size : 28px;
+}
+
+.card-list-love .third  .img-wrapper {
+    flex : 45%;
+    height: 80%;
+}
+
+.card-list-love .third  .img-wrapper img {
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: .7rem;
+    border-bottom-left-radius: .7rem;
+}
+
+.card-list-love .third  .animanga-info {
+    flex : 55%;
+    height: 80%;
+    flex-wrap: wrap;
+    background-color:  rgb(31, 31, 31);
+    color : white;
+    padding : 1rem 2.5rem;
+    border-top-right-radius: .7rem;
+    border-bottom-right-radius: .7rem;
+}
+
+.card-list-love .third  .animanga-info .detail ul {
+    display: inline-block;
+}
+
+.card-list-love .third  .animanga-info .detail ul li {
+    display: inline-block;
+    margin : .5rem;
+}
+
+.card-list-love .third .animanga-info .detail ul .action  {
+    flex-basis: 100%;
+}
+
+
+@media screen and ( max-width : 700px ) {
+
+    #body-love-list {
+        margin : 0;
+        padding: 2rem 0rem;
+    }
+    .card-list-love {
+        display: block;
+    }
+
+    .card-list-love > div {
+        display: inline-block;
+        margin-bottom: 2rem;
+        width: 100%;
+        min-height: 500px;
+    }
+
+    .card-list-love .third {
+        display: inline-block;
+    }
+
+    .card-list-love .first .animanga-info,
+    .card-list-love .second .animanga-info,
+    .card-list-love .first .animanga-info {
+        flex-direction: column;
+    }
+
+
+    .card-list-love .first .animanga-info .img-wrapper  {
+        position: relative;
+        width: 100%;
+        height : 100%;
+    }
+
+    .card-list-love .first .animanga-info .img-wrapper img {
+        border-radius: .7rem .7rem 0rem  0rem;
+        position: relative;
+        height: 15rem;
+    }
+
+    .card-list-love .first  .animanga-info .detail {
+        margin-top : -.5rem;
+        background-color:  rgb(31, 31, 31);
+        border-radius: 0;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+    }
+
+    .card-list-love .second .animanga-info img  {
+        height: 15rem;
+    }
+
+    .card-list-love .third .img-wrapper img {
+        height: 15rem;
+        border-radius: 0;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+    }
+
+    .card-list-love .third .animanga-info {
+        border-radius: 0;
+        margin-top : -.5rem;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+    }
+
+}

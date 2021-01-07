@@ -21,6 +21,7 @@ class Helper {
     public static function setError($msg = '',$code = 500) {
         $err = [
             'status' => 'error',
+            'data' => null,
             'code' => $code,
             'msg' => $msg,
         ];

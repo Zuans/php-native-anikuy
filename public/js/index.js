@@ -10,6 +10,8 @@ define(function(require) {
     const utils = require('./app/utils');
     const constant = require('./app/constant');
     const navbar = require('./app/navbar');
+    const anime = require('./app/anime');
+    module.anime = anime;
     module.constant = constant;
     module.browser = browser;
     module.utils = utils;
@@ -26,19 +28,20 @@ window.onload = () => {
 
 
 genreSelect.addEventListener('change',async function(event){
+    const { anime : Anime ,utils } = module;
     if(animeResult) {
         const selectEl = event.target;
         const selectedValue =  selectEl.options[selectEl.selectedIndex].value;
         let  url = `${baseAPIUrl}/anime?filter[categories]=${selectedValue}&sort=-averageRating`;
-        const anime = await module.utils.animangaRequest('GET',url,null);
-        const animeList = module.utils.setAnime(anime);
+        const anime = await utils.animangaRequest('GET',url,null);
+        const animeList = Anime.setAnimeCard(anime);
         animeResult.querySelector(':scope .card-list').innerHTML = animeList.join(" ");
     } else {
         const selectEl = event.target;
         const selectedValue =  selectEl.options[selectEl.selectedIndex].value;
         let  url = `${baseAPIUrl}/manga?filter[categories]=${selectedValue}&sort=-averageRating`;
-        const manga = await module.utils.animangaRequest('GET',url,null);
-        const mangaList = module.utils.setManga(manga);
+        const manga = await utils.animangaRequest('GET',url,null);
+        const mangaList = module.utils.setMangaCard(manga);
         mangaResult.querySelector(':scope .card-list').innerHTML = mangaList.join(" ");
     }
 

@@ -2,6 +2,7 @@ const burger = document.getElementById('btn-hamburger');
 const navbar = document.getElementById('navbar');
 
 
+
 const setNavbar = () => {
     // Set navbar onload
     clientType = module.browser.setClientType();
@@ -11,7 +12,9 @@ const setNavbar = () => {
         clientType = module.browser.setClientType();
         classNavbar();
     }
-}
+};
+
+
 
 function loadFunc() {
     module.utils.classNavbar();

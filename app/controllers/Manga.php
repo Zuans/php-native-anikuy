@@ -56,7 +56,7 @@ class Manga extends Controller {
         // Check user login
         $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
         if(!$userId) {
-            echo Helper::setError('You must be login',500);
+            echo Helper::setError('You must be login',401);
             return;
         }
 
@@ -97,7 +97,8 @@ class Manga extends Controller {
         $mangaLove = new MangaLove_model;
         $remove = $mangaLove->remove($userId,$post['mangaId']);
         if($remove) {
-            echo Helper::setSuccess('Success remove manga from love',200);
+            $loveManga = $mangaLove->getByUserId($userId);
+            echo Helper::setSuccess('Success remove manga from love',$loveManga,200);
             return;
         } else {
             echo Helper::setError('Error when remove manga from love',500);
@@ -130,8 +131,15 @@ class Manga extends Controller {
                 'id' => $manga['manga_id'],
             ];
             $url = ApiRequest::setUrlApi($param,'manga');
-            $response = ApiRequest::httpRequest('GET',$url);
-            $response = json_decode($response)->data;
+            try {
+                $response = ApiRequest::httpRequest('GET',$url);
+                property_exists($response,'data');
+                $response = json_decode($response)->data;
+            } catch(Exception $e) {
+                $err = Helper::setError($e->getMessage(),400);
+                var_dump($err);
+                return err;
+            }
             $manga = Manga::set($response);
             $allManga[] = $manga;
         }
@@ -153,8 +161,8 @@ class Manga extends Controller {
                     // If last index is factorial of 3
                     count($allManga) == ( $key + 1 ) ? $result[] = $splitManga : null;
                 } else if(count($allManga) == ( $key + 1 )) {
-                    $splitManga[] = $anime;
-                    $result[] = $splitmanga;
+                    $splitManga[] = $manga;
+                    $result[] = $splitManga;
                 } else {
                     $splitManga[] = $manga;
                 }
@@ -180,12 +188,13 @@ class Manga extends Controller {
                     'ageRating' => $value->attributes->ageRating,
                     'user' => $value->attributes->userCount,
                     'status' => $value->attributes->status,
-                    'aired' => $value->attributes->startDate?: '?' . ' ' . 'to' . $value->attributes->endDate?: '?',
+                    'aired' => self::setAired($value->attributes->startDate,$value->attributes->endDate),
                     'chapCount' =>$value->attributes->chapterCount ?: '?',
                     'mangaType' => $value->attributes->mangaType,
                     'serialization' => $value->attributes->serialization ?: '?',
                     'imgPoster' => $value->attributes->posterImage ? $value->attributes->posterImage->small : $baseImg,
-                    'imgCover' => $value->attributes->posterImage ? $value->attributes->posterImage->original : $baseImg,
+                    'imgPosterFl' => $value->attributes->posterImage ? $value->attributes->posterImage->large : $baseImg,
+                    'imgCover' => $value->attributes->coverImage ? $value->attributes->coverImage->original : $baseImg,
                 ];
                 $resultManga[] = $manga;
             }
@@ -201,12 +210,13 @@ class Manga extends Controller {
                     'ageRating' => $allManga[0]->attributes->ageRating,
                     'user' => $allManga[0]->attributes->userCount,
                     'status' => $allManga[0]->attributes->status,
-                    'aired' => $allManga[0]->attributes->startDate?: '?' . ' ' . 'to' . $allManga[0]->attributes->endDate?: '?',
+                    'aired' => self::setAired($allManga[0]->attributes->startDate,$allManga[0]->attributes->endDate),
                     'chapCount' =>$allManga[0]->attributes->chapterCount ?: '?',
                     'serialization' => $allManga[0]->attributes->serialization ?: '?',
                     'mangaType' => $allManga[0]->attributes->mangaType,
                     'imgPoster' => $allManga[0]->attributes->posterImage ? $allManga[0]->attributes->posterImage->small : $baseImg,
-                    'imgCover' => $allManga[0]->attributes->posterImage ? $allManga[0]->attributes->posterImage->original : $baseImg,
+                    'imgPosterFl' => $allManga[0]->attributes->posterImage ? $allManga[0]->attributes->posterImage->large : $baseImg,
+                    'imgCover' => $allManga[0]->attributes->coverImage ? $allManga[0]->attributes->coverImage->original : $baseImg,
             ];
             return $detailManga;
         }
@@ -229,6 +239,11 @@ class Manga extends Controller {
         } else {
             return $synopsis;
         }
+    }
+
+    public static function setAired($strt,$end) {
+        if($end == null ) $end = '???';
+        return $strt . ' ' . 'to' . ' ' . $end;
     }
 }
 

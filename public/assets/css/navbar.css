@@ -28,7 +28,7 @@ body {
 nav {
     width: 100%;
     padding-bottom: .5rem;
-    background-color: #149494;
+    background-color: #0f968a;
 }
 
 nav .nav-menu .nav-title,
@@ -37,9 +37,13 @@ nav .nav-menu ul li a {
 }
 
 .nav-title {
-    font-size : 26px;
+    font-size : 30px;
     padding :.6rem 1rem;
     color: #303030;
+}
+
+.nav-menu ul li {
+    margin : .4rem;
 }
 
 .nav-menu ul li a {
@@ -106,7 +110,7 @@ nav .nav-menu ul li a {
 .btn-auth-login:hover,
 .btn-auth-register:hover,
 .btn-auth-logout:hover {
-    transform : scale(1.15);
+    transform : scale(1.07);
 } 
 
 
@@ -198,7 +202,8 @@ nav .nav-menu ul li a {
 .nav-mobile .nav-menu ul,
 .nav-mobile .nav-auth {
     display: none;
-    transform: translateY(-300px);
+    transform: translateX(-300px);
+    opacity: 0;
     transition: all .4s ease-out;
 }
 .nav-mobile .nav-auth {
@@ -240,7 +245,7 @@ nav .nav-menu ul li a {
 .active .nav-auth
 {
     opacity: 1;
-    transform : translateY(0);
+    transform : translateX(0);
 }
 
 .active .nav-menu ul li a {
@@ -262,7 +267,7 @@ nav .nav-menu ul li a {
     position: relative;
     top: 10;
     right: 10;
-    background-color : #0083c0;
+    background-color : #1b97d1;
     width: 60px;
     height: 60px;
     padding: .7rem;
