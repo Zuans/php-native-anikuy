@@ -52,6 +52,7 @@ class Anime extends Controller {
             $isLoved = $animeLove->isLoved($userId,$id);
             // Add View
             $User = new User_model;
+            $User->incView($userId);
             return $this->view('detail',[
                 'animeDetail' => $animeDetail,
                 'isLoved' => $isLoved,

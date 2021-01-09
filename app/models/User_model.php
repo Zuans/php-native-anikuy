@@ -95,6 +95,14 @@ class User_model {
         $this->db->query("SELECT * FROM $this->table");
         $result = $this->db->resultSet();
     }
+
+    public function incView($userId){
+        $query =  "UPDATE $this->table SET view = view + 1 WHERE id=:user_id";
+        $this->db->query($query);
+        $this->db->bind(':user_id',$userId);
+        $this->db->execute();
+        return;
+    }
 }
 
 

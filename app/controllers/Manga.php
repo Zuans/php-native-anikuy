@@ -37,6 +37,8 @@ class Manga extends Controller {
         if($userId) {
             $mangaLove = new MangaLove_model;
             $isLoved = $mangaLove->isLoved($userId,$id);
+            $User = new User_model;
+            $User->incView($userId);
             $this->view('detail',[
                 'mangaDetail' => $detailManga,
                 'isLoved' => $isLoved,
