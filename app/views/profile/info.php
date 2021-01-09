@@ -1,5 +1,6 @@
 <?= View::setCSS('navbar');?>
 <?= View::setCSS('footer');?>
+<?= View::setCSS('alert');?>
 <?= View::setCSS('profile/info'); ?>
 
 <? View::setJS('page/profile/info');?>
@@ -14,19 +15,19 @@
         <ul>
             <li>
                 <h4>Username</h4>
-                <span>Zuans</span>
+                <span><?= $userInfo['username']?></span>
             </li>
             <li>
                 <h4>Email</h4>
-                <span>Zuans</span>
+                <span><?= $userInfo['email']?></span>
             </li>
             <li>
                 <h4>Created at</h4>
-                <span>20-20-1989</span>
+                <span><?= $userInfo['created_at']?><</span>
             </li>
             <li>
                 <h4>Animanga Love </h4>
-                <span>48 Loves</span>
+                <span><?=  $loveCount; ?> Loves</span>
             </li>
         </ul>
     </div>
@@ -35,7 +36,7 @@
         <hr>
         <div class="user-info">
             <div class="love-count">
-                <span>Animanga 36 <i class="fas fa-heart"></i></span>
+                <span>Animanga <?=  $loveCount; ?>  <i class="fas fa-heart"></i>    </span>
             </div>
             <div class="comment-count">
                 <span>Comment 46 <i class="fas fa-comment"></i></span>
@@ -45,28 +46,56 @@
             </div>
         </div>
         <div class="form-wrapper">
-            <form action="" class="form-change-profile">
-                <h1>Edit Account</h1>
-                <hr>
+            <h1>Edit Account</h1>      
+            <hr>
+            <div class="alert-wrapper">
+                <?= Flash::showFlash(); ?>
+            </div>
+            <form action="<?= View::request('Profile/edit') ?>" method="POST" class="form-change-profile form-change-password">
                 <div class="input-group">
                     <label for="username">Username</label>
-                    <input type="text" name="username" id="username">
+                    <input type="text" name="username" value="<?= isset($userInfo['username']) ? $userInfo['username'] : ''; ?>" id="username">
                 </div>
                 <div class="input-group">
-                    <label for="username">Email</label>
-                    <input type="text" name="username" id="username">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" value="<?= isset($userInfo['email']) ? $userInfo['email'] : ''; ?>" id="email">
                 </div>
                 <div class="input-group">
-                    <label for="username">Old Password</label>
-                    <input type="text" name="username" id="username">
+                    <label for="password">Password</label>
+                    <input type="password" name="password"   id="password">
+                </div>
+                <input type="submit" value="Change Save">
+            </form>
+            <div class="separator">
+                <h3>Or</h3>
+            </div>
+            <!-- Form change profile with new password -->
+            </form>
+            <h1>Change Password</h1>      
+            <hr>
+            <div class="alert-wrapper">
+                <?= Flash::showFlash(); ?>
+            </div>
+            <form action="<?= View::request('Profile/edit') ?>" method="POST" class="form-change-profile form-change-password">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" value="<?= isset($userInfo['username']) ? $userInfo['username'] : ''; ?>" id="username">
                 </div>
                 <div class="input-group">
-                    <label for="username">New Pasword</label>
-                    <input type="text" name="username" id="username">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" value="<?= isset($userInfo['email']) ? $userInfo['email'] : ''; ?>" id="email">
                 </div>
                 <div class="input-group">
-                    <label for="username">Confirm Pasword</label>
-                    <input type="text" name="username" id="username">
+                    <label for="old-password">Old Password</label>
+                    <input type="password" name="old-password"   id="old-password">
+                </div>
+                <div class="input-group">
+                    <label for="new-password">New Pasword</label>
+                    <input type="password" name="new-password" id="new-password">
+                </div>
+                <div class="input-group">
+                    <label for="password">Confirm Pasword</label>
+                    <input type="password" name="confirm-password" id="confirm-password">
                 </div>
                 <input type="submit" value="Change Save">
             </form>

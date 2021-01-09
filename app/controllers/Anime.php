@@ -50,7 +50,9 @@ class Anime extends Controller {
         if($userId) {
             $animeLove = new AnimeLove_model;
             $isLoved = $animeLove->isLoved($userId,$id);
-            $this->view('detail',[
+            // Add View
+            $User = new User_model;
+            return $this->view('detail',[
                 'animeDetail' => $animeDetail,
                 'isLoved' => $isLoved,
             ]);
@@ -63,7 +65,6 @@ class Anime extends Controller {
         }
 
     }
-
 
 
     public function addLove() {
@@ -212,6 +213,11 @@ class Anime extends Controller {
             ];
             return $anime;
         }
+    }
+
+    public static function addView($userId,$animeId) {
+        echo $userId;
+        echo $animeId;
     }
 
     public static function popularAnime() {

@@ -18,7 +18,7 @@ body {
 
 #profile-body .info-profile {
     flex : 25%;
-    background-color :#5120a0;
+    background-color :#7c25a5;
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.6);
     /* 713dc5 */
 }
@@ -29,7 +29,7 @@ body {
     display: block;
     color : white;
     border-radius : 7px; 
-    font-size : 36px;
+    font-size : 30px;
 }
 
 #profile-body .info-profile hr {
@@ -52,6 +52,8 @@ body {
     flex : 100%;
     background-color : #327cb8;
     margin-left : 3rem;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.6);
+    
 }
 
 .title {
@@ -61,7 +63,7 @@ body {
 #profile-body .main-profile h1 {
     margin-bottom: 1rem;
     color : white;
-    font-size : 36px;
+    font-size : 30px;
 }
 
 #profile-body .main-profile hr {
@@ -72,12 +74,12 @@ body {
 
 .user-info {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
 }
 
 .user-info > div {
     padding : .7rem 1.4rem;
-    background-color : #5826a8;
+    background-color : #7c25a5;
     border-radius: 1rem;
     margin-top : 1.25rem ;
     margin-right: 2.5rem ;
@@ -100,6 +102,11 @@ body {
     justify-content: stretch;
 }
 
+.form-wrapper .alert-wrapper {
+    display: block;
+    width: 80%;
+    padding: 1rem 0rem;
+}
 
 .form-wrapper .input-group {
     margin : 1.25rem 0rem;
@@ -107,9 +114,9 @@ body {
 }
 
 .form-wrapper .input-group label{
-    flex : 35%;
+    flex : 40%;
     color : #fcfcfc;
-    font-size : 26px;
+    font-size : 22px;
 }
 
 .form-wrapper .input-group input {
@@ -121,7 +128,10 @@ body {
     color : rgb(31, 31, 31);
     padding : .3rem 1rem;
     border-radius : 2rem;
+    font-size : 16px;
+    font-weight: 600;
 }
+
 
 
 .form-wrapper input[type="submit"] {
@@ -135,4 +145,35 @@ body {
     color : #205e91;
     cursor : pointer;
     font-weight : 700;
+}
+
+
+.hr-barrier  h3{
+    width : 100%;
+    display : flex;
+    text-align: center;
+}
+
+.separator {
+    width: 100%;
+    display: flex;
+    padding : 2rem 0rem;
+    align-items: center;
+    text-align : center;
+    color : #fefefe;
+}
+
+.separator::before,
+.separator::after {
+    content : '';
+    flex : 1;
+    border-bottom: 3px solid #fefefe;
+}
+
+.separator::before {
+    margin-right : .5rem;
+}
+
+.separator::after {
+    margin-left : .5rem;
 }

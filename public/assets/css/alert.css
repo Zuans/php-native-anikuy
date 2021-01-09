@@ -5,14 +5,14 @@
 .alert-error {
     box-sizing: border-box;
     width : 100%;
-    background-color : #0a9443;
+    background-color : #148038;
     color : white;
     padding : 1rem 1.5rem;
-    border-radius : 2rem;
+    border-radius : 1rem;
     text-align : center;
     letter-spacing: 1px;
 }
 
 .alert-error {
-    background-color: #be241e;
+    background-color: #ca3833;
 }

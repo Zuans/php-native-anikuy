@@ -27,6 +27,7 @@ Route::get('Auth/logout');
 
 // PROFILE ROUTE
 Route::get('Profile/info');
+Route::post('Profile/edit');
 Route::get('Profile/loveList');
 
 class Route {

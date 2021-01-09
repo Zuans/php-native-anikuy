@@ -10,6 +10,14 @@
             $this->db = new Database;
         }
 
+        public function count($userId) {
+            $query = "SELECT * FROM $this->table WHERE user_id = :user_id";
+            $this->db->query($query);
+            $this->db->bind(':user_id',$userId);
+            $this->db->execute();
+            return $this->db->rowCount();
+        }
+
         public function add($userId,$animeId) {
             $query = "INSERT INTO $this->table(anime_id,user_id) VALUE (:anime_id,:user_id)";
             $this->db->query($query);

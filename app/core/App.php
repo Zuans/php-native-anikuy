@@ -14,10 +14,6 @@ class App {
     public function __construct() {
         $url = $this->parseUrl();
         
-        // return if access js or css for prevent the error
-        // if($url[0] == 'js' || $url[0] == 'css' ) {
-        //     return;
-        // }
 
         // Set Controller 
         $this->controller = count($url) > 0 ? $this->setController($url[0]) : $this->setController($this->baseController);
