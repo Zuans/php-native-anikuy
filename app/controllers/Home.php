@@ -15,7 +15,8 @@ class Home extends Controller {
         $allAnime = Anime::set($allAnime);
         $this->view('home',[
             'allAnime' => $allAnime,
-             'popularAnime' => $popularAnime,
+            'popularAnime' => $popularAnime,
+            'typeSearch' => 'Top Airing Anime',
         ]); 
     }
 

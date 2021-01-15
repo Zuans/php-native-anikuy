@@ -3,7 +3,17 @@
     src : url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 }
 
+@media screen and (max-width : 767px ) {
+    :root {
+        --scale : 0.8;
+    }
+}
 
+@media screen and (min-width : 768px ) {
+    :root {
+        --scale : 1;
+    }
+}
 
 
 /* Footer */
@@ -51,7 +61,7 @@ footer .sosmed ul  {
 
 
 footer .sosmed ul li a i{
-    font-size : 3em;
+    font-size : calc( 2.5em * var(--scale));
     color : white;
     margin-bottom: 2.5rem;
 }
@@ -76,7 +86,7 @@ footer .nav ul {
 footer .nav ul li {
     text-align: left;
     display: block;
-    font-size: 24px;
+    font-size: calc( 20px * var(--scale));
     margin-bottom: 1rem;
 }
 
@@ -108,6 +118,20 @@ footer .brand input {
     border-radius : 5px;
 }
 
+footer .kitsu {
+    position: absolute;
+    right : 1rem;
+    padding : 0rem 2rem;
+    font-size: calc( 14px * var(--scale));
+    margin-top : 4rem;
+    text-align: center;
+}
+
+footer .kitsu img  {
+    text-shadow : 1px 3px 7px rgba(0, 0, 0, 0,6);
+}
+
+
 
 
 
@@ -119,8 +143,9 @@ footer .brand input {
 
 
     footer .nav ul {
-        display: inline-block;
+        display: block;
         padding: 0;
+        text-align: center;
     }
 
     footer .nav ul li {
@@ -136,7 +161,6 @@ footer .brand input {
         display: inline-block;
         width: 100%;
         text-align: center;
-        padding : 1rem 0rem;
         box-sizing: border-box;
     }
 
@@ -154,6 +178,11 @@ footer .brand input {
 
     footer .brand {
         padding-left: 2rem;
+    }
+
+    footer .kitsu {
+        position: relative;
+        margin-top : 0rem;
     }
 
 

@@ -39,7 +39,7 @@
                 <span>Animanga <?=  $loveCount; ?>  <i class="fas fa-heart"></i>    </span>
             </div>
             <div class="comment-count">
-                <span>Comment 12 <i class="fas fa-comment"></i> </span>
+                <span>Comment <?=  $commentCount; ?> <i class="fas fa-comment"></i> </span>
             </div>
             <div class="see-count">
                 <span>View <?= $userInfo['view'];?>  <i class="far fa-eye"></i></span>

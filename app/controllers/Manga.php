@@ -10,6 +10,7 @@ class Manga extends Controller {
         $this->view('home',[
             'popularManga' => $popularManga,
             'allManga' => $currentManga,
+            'typeSearch' => 'Top Current Manga',
         ]);
     }
 
@@ -22,6 +23,7 @@ class Manga extends Controller {
         $this->view('home',[
             'popularManga' => $popularManga,
             'allManga' => $resultManga,
+            'typeSearch' => 'Manga Search Result',
         ]);
     }
 
@@ -29,11 +31,16 @@ class Manga extends Controller {
         $params = [
             'id' => $id,
         ];
+        // Class instance
+        $MangaComment = new MangaComment_model;
+
+
         $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
         $url = ApiRequest::setUrlApi($params,'manga');
         $detailManga = ApiRequest::httpRequest('GET',$url);
         $allManga = json_decode($detailManga)->data;
         $detailManga = self::set($allManga);
+        $commentsManga = $MangaComment->getByMangaId($id);
         if($userId) {
             $mangaLove = new MangaLove_model;
             $isLoved = $mangaLove->isLoved($userId,$id);
@@ -42,11 +49,15 @@ class Manga extends Controller {
             $this->view('detail',[
                 'mangaDetail' => $detailManga,
                 'isLoved' => $isLoved,
+                'allComment' => $commentsManga['allComment'],
+                'totalData' => $commentsManga['totalData'],
             ]);
         } else {
             $this->view('detail',[
                 'mangaDetail' => $detailManga,
                 'isLoved' => false,
+                'allComment' => $commentsManga['allComment'],
+                'totalData' => $commentsManga['totalData'],
             ]);
             return;
         }
@@ -109,21 +120,7 @@ class Manga extends Controller {
     }
 
 
-    public static function popularManga() {
-        $url =  BASE_API_URL . '/manga?sort=-userCount&page[limit]=5';
-        $allManga = ApiRequest::httpRequest('GET',$url);
-        $allManga = json_decode($allManga)->data;
-        $allManga = self::set($allManga);
-        return $allManga;
-    }
 
-    public static function currentManga() {
-        $url = BASE_API_URL . '/manga?filter[status]=current&sort=-averageRating';
-        $currentManga = ApiRequest::httpRequest('GET',$url);
-        $currentManga = json_decode($currentManga)->data;
-        $currentManga = self::set($currentManga);
-        return $currentManga;
-    }
 
 
     public static function setMangaLove($allId) {
@@ -175,6 +172,29 @@ class Manga extends Controller {
         return $result;
     }
 
+    public function addComment() {
+        $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+        if(!$userId) {
+            echo Helper::setError('Unauthorized',401);
+            return;
+        }
+
+        $post = Helper::postData();
+        if(!$post) {
+            echo Helper::setError('Error when parsing bodyData');
+            return;
+        }
+        $MangaComment = new MangaComment_model;
+        $newComment = $MangaComment->add($post['mangaId'],$userId,$post['text']);
+        if(!$newComment) {
+            echo Helper::setError('Error when add comment please try again');
+            return;
+        }
+
+        echo Helper::setSuccess('Success add comment',$newComment);
+        return;
+    }
+
     public static function set($allManga) {
         $baseImg = BASE_URL . 'assets/img/card-1.png';
         if(count($allManga) > 1 ) {
@@ -222,6 +242,22 @@ class Manga extends Controller {
             ];
             return $detailManga;
         }
+    }
+
+    public static function popularManga() {
+        $url =  BASE_API_URL . '/manga?sort=-userCount&page[limit]=5';
+        $allManga = ApiRequest::httpRequest('GET',$url);
+        $allManga = json_decode($allManga)->data;
+        $allManga = self::set($allManga);
+        return $allManga;
+    }
+
+    public static function currentManga() {
+        $url = BASE_API_URL . '/manga?filter[status]=current&sort=-averageRating';
+        $currentManga = ApiRequest::httpRequest('GET',$url);
+        $currentManga = json_decode($currentManga)->data;
+        $currentManga = self::set($currentManga);
+        return $currentManga;
     }
 
     public static function setLang($lang) {

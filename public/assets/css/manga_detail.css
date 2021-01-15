@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 
 @media screen and ( max-width : 767px ) {
     :root  {
@@ -149,11 +153,103 @@
     text-indent : 50px;
     margin-top : 2rem;
     line-height: 1.8;
+    padding-bottom : 1rem;
 }
 
 
+#comment-body {
+    background-color : #2489b1;
+    box-shadow: -5px 3px 8px rgba(0, 0, 0, 0.7);
+    min-height : 20vh;
+    margin-top : 3rem;
+    padding : 2rem;
+}
+
+#comment-body  h1 {
+    padding-bottom: 1rem;
+    color : #eee3e3;
+}
+
+#comment-body .comment-card {
+    background-color : #1a70a1;
+    padding : 1rem 2rem;
+    color : #eee3e3;
+    box-shadow: 0px 3px 10px rgba(15, 15, 15, 0.233);
+    border-radius : .7rem;
+    margin-bottom : 1.5rem;
+}
+
+#comment-body .comment-card .comment-info {
+    margin-bottom : .5rem;
+}
+
+#comment-body .comment-card .username {
+    display: inline-block;
+    font-size : 24px;
+    font-weight: 600;
+    margin-right : .2rem;
+}
+
+#comment-body .comment-card .comment-date {
+    display : inline-block;
+    font-weight: 600;
+}
+
+#comment-body .comment-card  .comment-text {
+    text-indent : 20px;
+}
+
+#comment-body  #btn-more-comnt {
+    display: block;
+    padding : .5rem 1rem;
+    border : none;
+    border-radius : .2rem;
+    cursor: pointer;
+    margin : auto;
+}
+
+#comment-body .comment-input {
+    padding : 1rem 0rem;
+    position: relative;
+    width : 50%;
+}
+
+#comment-body .comment-input h3 {
+    padding-bottom : 1rem;
+    color : #eee3e3;
+}
 
 
+#comment-body .comment-input input {
+    background-color: #fefefe;
+    display: block;
+    color : #303030;
+    padding : .75rem 1.5rem;
+    outline : none;
+    border : none;
+    border-radius : .7rem;
+    width : 100%;
+    box-shadow: 0px 3px 10px rgba(15, 15, 15, 0.233);
+}
+
+#comment-body .comment-input button {
+    position: absolute;
+    background-color : #303030;
+    color : #fefefe;
+    cursor : pointer;
+    z-index : 2;
+    right : 0;
+    bottom : 1rem;
+    outline : none;
+    border : none;
+    padding : .75rem 1.5rem;
+    border-top-right-radius : .7rem;
+    border-bottom-right-radius : .7rem;
+}
+
+#comment-body .not-authorized {
+    color : #fefefe;
+}
 
 
 
@@ -169,10 +265,16 @@
 
     .container {
         flex-direction: column-reverse;
+        margin-top : 0px;
     }
 
     .container .manga-content {
         margin : 0;
+        box-shadow: none;
+    }
+
+    .container .manga-content h1 {
+        padding : 0rem 1rem;
     }
 
     .container .manga-content .spec-info {
@@ -185,4 +287,7 @@
         margin-bottom : 1rem;
     }
 
+    #comment-body .comment-input  {
+        width : 100%;
+    }
 }

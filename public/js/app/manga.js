@@ -230,7 +230,6 @@ const setMangaCard = (allManga) => {
         </div>
     </div>`
     });
-    console.log(resultManga);
     return resultManga;
 }
 

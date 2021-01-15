@@ -12,12 +12,12 @@ class Profile extends Controller {
             return $this->redirect('Auth/indexLogin');
         }
         $userInfo = $User->getUserById($userId);
-        $animeCount = $AnimeLove->count($userId);
-        $mangaCount = $MangaLove->count($userId);
-        $loveCount  =  $animeCount + $mangaCount;
+        $loveCount = $User->loveCount($userId);
+        $commentCount = $User->commentCount($userId);
         return $this->view('profile/info',[
             'userInfo' => $userInfo,
             'loveCount' => $loveCount,
+            'commentCount' => $commentCount,
         ]);
     }
 

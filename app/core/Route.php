@@ -10,6 +10,7 @@ Route::post('Anime/search');
 Route::get('Anime/show',['id']);
 Route::post('Anime/addLove');
 Route::post('Anime/removeLove');
+Route::post('Anime/addComment');
 
 // MANGA ROUTE
 Route::get('Manga/index');
@@ -17,6 +18,7 @@ Route::post('Manga/search');
 Route::get('Manga/show',['id']);
 Route::post('Manga/addLove');
 Route::post('Manga/removeLove');
+Route::post('Manga/addComment');
 
 //  AUTH ROUTE
 Route::get('Auth/indexLogin');
@@ -29,6 +31,11 @@ Route::get('Auth/logout');
 Route::get('Profile/info');
 Route::post('Profile/edit');
 Route::get('Profile/loveList');
+
+// COMMENT ROUTE
+Route::post('Comment/loadMoreAnime');
+Route::post('Comment/loadMoreManga');
+
 
 class Route {
 

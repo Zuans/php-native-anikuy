@@ -278,6 +278,7 @@
 
     .card-list-love .first  .animanga-info .detail {
         margin-top : -.5rem;
+        background-image: none;
         background-color:  rgb(31, 31, 31);
         border-radius: 0;
         border-bottom-left-radius: 1rem;

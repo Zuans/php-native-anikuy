@@ -21,6 +21,13 @@
         <li><a href=""><i class="fab fa-github-square"></i></a></li>
     </ul>
 </div>
+<div class="kitsu">
+    <h1>API provide By kitsu</h1>
+    <a href="https://kitsu.io/" target="_blank">
+        <img src="<?= View::assets('img/kitsu_api.png')?>" alt="" class="kitsu-img">
+    </a>
+    
+</div>
 </footer>
 </body>
 </html>

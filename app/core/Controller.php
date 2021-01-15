@@ -55,7 +55,9 @@ class View extends Controller {
         } 
     }
 
-
+    public function assets($pathFile) {
+        return BASE_URL . 'assets/' . $pathFile;
+    }
 
 
     public static function setCSS($pathFile) {

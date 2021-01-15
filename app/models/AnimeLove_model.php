@@ -1,6 +1,5 @@
 <?php
 
-
     class AnimeLove_model {
         private $table = 'anime_loves',
                 $db;

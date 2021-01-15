@@ -19,7 +19,6 @@
                     Tempat buat cari manga doang
                 <?php endif; ?>
             </h4>
-            <hr/>
         </div>
     </section>
     <?php if( isset($popularAnime)) : ?>
@@ -67,6 +66,7 @@
                     </div>
                 </form>
                 <div class="anime-result" id="anime-result" >
+                    <h2 id="title-content" > <?= $typeSearch;?> </h2>
                     <div class="card-list">
                         <?php if(count($allAnime) > 0) : ?>
                             <?php foreach($allAnime as $anime ): ?>
@@ -95,7 +95,7 @@
         <section id="body-manga" >
         <div class="manga-list-wrapper">
             <div class="favorites-manga">
-                <h1>Favorites Anime</h1>
+                <h1>Favorites Manga</h1>
                 <div class="card-list">
                     <?php foreach($popularManga as $manga ): ?>
                             <div class="card">
@@ -137,6 +137,7 @@
                     </div>
                 </form>
                 <div class="manga-result" id="manga-result" >
+                <h2 id="title-content" > <?= $typeSearch;?> </h2>
                     <div class="card-list">
                         <?php if(count($allManga) > 0) : ?>
                             <?php foreach($allManga as $manga ): ?>

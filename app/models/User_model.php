@@ -78,7 +78,7 @@ class User_model {
     }
 
     public function getUserById($userId) {
-        $query = "SELECT * FROM $this->table WHERE ID = :id";
+        $query = "SELECT ID,username,email,created_at,view FROM $this->table WHERE ID = :id";
         $this->db->query($query);
         $this->db->bind(':id',$userId);
         return $this->db->single();
@@ -95,6 +95,31 @@ class User_model {
         $this->db->query("SELECT * FROM $this->table");
         $result = $this->db->resultSet();
     }
+
+    public function addUsername($data) {
+        $userInfo = $this->getUserById($data['user_id']);
+        $data['username'] = $userInfo['username'];
+        return $data;
+    }
+
+    public function addUsernames($data) {
+        $i = 0;
+        foreach($data as $d) {
+            $data[$i] = $this->addUsername($d);
+            $i++;
+        };
+        return $data;
+    }
+
+
+    public function commentCount($userId) {
+        $AnimeComment = new AnimeComment_model;
+        $MangaComment = new MangaComment_model;
+        $animeComment = $AnimeComment->getByUserId($userId);
+        $mangaComment = $MangaComment->getByUserId($userId);
+        return $animeComment + $mangaComment;
+    }
+
 
     public function incView($userId){
         $query =  "UPDATE $this->table SET view = view + 1 WHERE id=:user_id";

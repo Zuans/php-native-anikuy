@@ -35,6 +35,7 @@ class Anime extends Controller {
         $this->view('home',[
             'popularAnime' => $popularAnime,
             'allAnime' => $resultAnime,
+            'typeSearch' => 'Anime Search Result',
         ]);
     }
 
@@ -46,6 +47,9 @@ class Anime extends Controller {
         $animeResult = ApiRequest::httpRequest('GET',$url);
         $animeResult =  json_decode($animeResult)->data;
         $animeDetail = Anime::set($animeResult);
+        // Get all comment by anime id
+        $AnimeComment = new AnimeComment_model;
+        $comments = $AnimeComment->getByAnimeId($id);
         $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : false ;
         if($userId) {
             $animeLove = new AnimeLove_model;
@@ -56,11 +60,15 @@ class Anime extends Controller {
             return $this->view('detail',[
                 'animeDetail' => $animeDetail,
                 'isLoved' => $isLoved,
+                'allComment' => $comments['allComment'],
+                'totalData' => $comments['totalData'],
             ]);
         } else {
             $this->view('detail',[
                 'animeDetail' => $animeDetail,
                 'isLoved' => false,
+                'allComment' => $comments['allComment'],
+                'totalData' => $comments['totalData'],
             ]);
             return;
         }
@@ -165,6 +173,32 @@ class Anime extends Controller {
         return $result;
     }
 
+    public static function addComment() {
+        // Instance class
+        $AnimeComment = new AnimeComment_model;
+
+        $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+        if(!$userId) {
+            echo Helper::setError('Unauthorized',401);
+            return;
+        }
+
+        $post = Helper::postData();
+        if(!$post) {
+            echo Helper::setError('Error when parsing body data');
+            return;
+        }
+
+        $newComment = $AnimeComment->add($post['animeId'],$userId,$post['text']);
+        if(!$newComment) {
+            echo Helper::setError('Error when add anime please try again!');
+            return;
+        }
+
+        echo Helper::setSuccess('Success add comment',$newComment);
+        return;
+    }
+
     public static function set($animes) {
         $baseImg = BASE_URL . 'assets/img/card-1.png';
         if(count($animes) > 1 ) {
@@ -184,7 +218,8 @@ class Anime extends Controller {
                     'status' => $value->attributes->status,
                     'aired' => self::setAired($value->attributes->startDate,$value->attributes->endDate),
                     'epsCount' => $value->attributes->episodeCount ?: '?',
-                    'epsLength' => self::setEpsLen($value->attributes->showType,$value->attributes->episodeLength),
+                    'epsLength' => $value->attributes->episodeLength != null ? self::setEpsLen($value->attributes->showType,$value->attributes->episodeLength) : '???' ,
+                    'ytVideoId' => $value->attributes->youtubeVideoId,
                     'imgPoster' => $value->attributes->posterImage ? $value->attributes->posterImage->small  : $baseImg,
                     'imgPosterFl' => $value->attributes->posterImage ? $value->attributes->posterImage->large  : $baseImg,
                     'imgCover' => $value->attributes->coverImage ? $value->attributes->coverImage->original : $baseImg,
@@ -207,7 +242,8 @@ class Anime extends Controller {
                 'status' => $animes[0]->attributes->status,
                 'aired' => self::setAired($animes[0]->attributes->startDate,$animes[0]->attributes->endDate),
                 'epsCount' => $animes[0]->attributes->episodeCount ?: '?' ,
-                'epsLength' => self::setEpsLen($animes[0]->attributes->showType,$animes[0]->attributes->episodeLength),
+                'epsLength' => $animes[0]->attributes->episodeLength ? self::setEpsLen($animes[0]->attributes->showType,$animes[0]->attributes->episodeLength) : '???',
+                'ytVideoId' => $animes[0]->attributes->youtubeVideoId,
                 'imgPoster' => $animes[0]->attributes->posterImage ? $animes[0]->attributes->posterImage->small  : $baseImg,
                 'imgPosterFl' => $animes[0]->attributes->posterImage ? $animes[0]->attributes->posterImage->large  : $baseImg,
                 'imgCover' => $animes[0]->attributes->coverImage ? $animes[0]->attributes->coverImage->original :  $baseImg,
@@ -216,10 +252,8 @@ class Anime extends Controller {
         }
     }
 
-    public static function addView($userId,$animeId) {
-        echo $userId;
-        echo $animeId;
-    }
+
+
 
     public static function popularAnime() {
         $url = 'https://kitsu.io/api/edge/anime?sort=-userCount&page[limit]=5';

@@ -2,7 +2,7 @@
         <div class="nav-menu ">
             <h1 class="nav-title">AniKuy</h1>
             <ul class="nav-list">
-                <li><a href="/">Home</a></li>
+                <li><a href="<?= View::request('Home/index')?>">Home</a></li>
                 <li><a href="<?= View::request('Home/index')?>">Anime</a></li>
                 <li><a href="<?= View::request('Manga/index')?>">Manga</a> </li>
                 <?php if(isset($_SESSION['user_id'])):  ?>
