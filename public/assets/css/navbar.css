@@ -29,6 +29,7 @@ nav {
     width: 100%;
     padding-bottom: .5rem;
     background-color: #0f968a;
+    box-shadow: 0px 4px 10px rgba(29, 29, 29, 0.74);
 }
 
 nav .nav-menu .nav-title,

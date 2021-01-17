@@ -25,6 +25,8 @@ class ApiRequest {
 
 
     public static function httpRequest($method,$url,$data = []) {
+        try {
+
         $ch = curl_init();
         switch($method)
         {
@@ -39,10 +41,20 @@ class ApiRequest {
                 break;
         }
         curl_setopt($ch,CURLOPT_URL,$url);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
 
         $result = curl_exec($ch);
-        return $result;
+
+        if($result == false )  {
+            throw new Exception(curl_error($ch),curl_errno($ch));
+
+        }
+        curl_close($ch);
+        return $result;            
+        } catch(Exception $e) {
+            echo "Error" . $e->getMessage();
+        }
     }
 }
 

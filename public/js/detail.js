@@ -6,6 +6,10 @@ const commentList = document.querySelector('.all-comments');
 const addComment = document.getElementById('add-comment');
 const txtComment = document.getElementById('input-comment');
 const btnLoadEl = document.getElementById('btn-more-comnt');
+const alertEl = document.getElementsByClassName('alert')[0];
+const alert = {
+    height : 0,
+}
 const btnLoad = {
     limit : 5,
     click : 1,
@@ -32,7 +36,7 @@ window.onload = () => {
 
 
 loveIcon.addEventListener('click',async function() {
-
+    const { utils } = module;
     const isLoved = loveIcon.classList.contains('love');
     // Init request
     const httpRequest = module.utils.httpRequest;
@@ -59,13 +63,12 @@ loveIcon.addEventListener('click',async function() {
     if(isLoved) {
         const request = `${type}/removeLove`;
         const urlRequest = `${baseUrl}/${request}`;
-        console.log(bodyData);
         try {
             const { status,msg} = await httpRequest('POST',urlRequest,bodyData);
             if(status == 'success') {
                 loveIcon.classList.remove('love');
             } else {
-                console.error(msg);
+                throw new Error(msg);
             }
         } catch(err) {
             console.log(err);
@@ -78,10 +81,10 @@ loveIcon.addEventListener('click',async function() {
             if(status == 'success') {
                 loveIcon.classList.add('love');
             } else {
-                console.error(msg);
+                throw new Error(msg);
             }
         } catch(err) {
-            console.log(err);
+            utils.alertError(alertEl,err);
         }
     }
 })

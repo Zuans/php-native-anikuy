@@ -39,6 +39,27 @@
     height: 100%;
 }
 
+.alert {
+    display: none;
+    padding : .5rem 1rem;
+    margin : auto;
+    width: 50%;
+    text-align : center;
+    border-radius: .5rem;
+}
+
+.is-visible {
+    margin-top : 2.5rem;
+    display: block;
+}
+
+.error {
+    background-color: #18963e;
+    color : white;
+}
+
+
+
 .container {
     margin-top : 2.5rem;
     width : 100%;
@@ -206,6 +227,14 @@
     border-radius : .2rem;
     cursor: pointer;
     margin : auto;
+    outline : none;
+    font-weight: 600;
+    font-size : 1.1rem;
+    color : #1a70a1;
+}
+
+#comment-body .not-authorized {
+    margin-top : 0px;
 }
 
 #comment-body .comment-input {
@@ -248,7 +277,13 @@
 }
 
 #comment-body .not-authorized {
-    color : #fefefe;
+    color : #202020;
+}
+
+#comment-body .not-authorized a {
+    color : wheat;
+    font-weight: 600;
+    font-size : 1.3em;
 }
 
 
@@ -256,8 +291,13 @@
 
 
 
-
 @media only screen and ( max-width : 767px ) {
+
+    
+    #manga-detail {
+        margin-top: 0rem;
+    }
+
     .img-hero  {
         width: 100%;
         height : 55vw;
@@ -265,7 +305,7 @@
 
     .container {
         flex-direction: column-reverse;
-        margin-top : 0px;
+        margin-top : 0rem;
     }
 
     .container .manga-content {

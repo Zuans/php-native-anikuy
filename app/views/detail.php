@@ -17,6 +17,8 @@
     <div class="img-hero">
         <img src="<?= $animeDetail['imgCover']?>" alt="<?$animeDetail['title']?>">
     </div>
+    <div class="alert">
+    </div>
     <div class="container">
         <div class="anime-info">
             <h2>Information</h2>
@@ -74,6 +76,8 @@
     <section id="manga-detail">
     <div class="img-hero">
         <img src="<?= $mangaDetail['imgCover']?>" alt="<?$mangaDetail['title']?>">
+    </div>
+    <div class="alert">
     </div>
     <div class="container">
         <div class="manga-info">

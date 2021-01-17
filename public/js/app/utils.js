@@ -70,6 +70,18 @@ const animangaRequest = async (method,url,data) => {
 }
 
 
+const alertError = (el,text) => {
+    el.style.display = "block";
+    el.textContent = text;
+    const height = el.offsetHeight;
+    el.style.height = "0px";
+    el.classList.add('is-visible');
+    el.style.height = `${height}px`;
+    el.classList.add('error');
+}
+
+
+
 const httpRequest = async (method,url,data) => {
     if(method == "PUT") {
         try {
@@ -182,6 +194,7 @@ const setAired = (startDate,endDate) => {
 define({
     classNavbar,
     setFormData,
+    alertError,
     animangaRequest,
     httpRequest,
     clearCardList,
