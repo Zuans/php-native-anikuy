@@ -54,11 +54,11 @@
             <form action="<?= View::request('Profile/edit') ?>" method="POST" class="form-change-profile form-change-password">
                 <div class="input-group">
                     <label for="username">Username</label>
-                    <input type="text" name="username" value="<?= isset($userInfo['username']) ? $userInfo['username'] : ''; ?>" id="username">
+                    <input type="text" name="username" value="<?= isset($userInfo['username']) ? $userInfo['username'] : ''; ?>" id="username-1">
                 </div>
                 <div class="input-group">
                     <label for="email">Email</label>
-                    <input type="text" name="email" value="<?= isset($userInfo['email']) ? $userInfo['email'] : ''; ?>" id="email">
+                    <input type="text" name="email" value="<?= isset($userInfo['email']) ? $userInfo['email'] : ''; ?>" id="email-1">
                 </div>
                 <div class="input-group">
                     <label for="password">Password</label>
@@ -79,11 +79,11 @@
             <form action="<?= View::request('Profile/edit') ?>" method="POST" class="form-change-profile form-change-password">
                 <div class="input-group">
                     <label for="username">Username</label>
-                    <input type="text" name="username" value="<?= isset($userInfo['username']) ? $userInfo['username'] : ''; ?>" id="username">
+                    <input type="text" name="username" value="<?= isset($userInfo['username']) ? $userInfo['username'] : ''; ?>" id="username-2">
                 </div>
                 <div class="input-group">
                     <label for="email">Email</label>
-                    <input type="text" name="email" value="<?= isset($userInfo['email']) ? $userInfo['email'] : ''; ?>" id="email">
+                    <input type="text" name="email" value="<?= isset($userInfo['email']) ? $userInfo['email'] : ''; ?>" id="email-2">
                 </div>
                 <div class="input-group">
                     <label for="old-password">Old Password</label>

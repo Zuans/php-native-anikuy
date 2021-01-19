@@ -77,7 +77,8 @@ loveIcon.addEventListener('click',async function() {
         const request = `${type}/addLove`;
         const urlRequest = `${baseUrl}/${request}`;
         try {
-            const {status,msg} = await httpRequest('POST',urlRequest,bodyData);
+            const response = await httpRequest('POST',urlRequest,bodyData);
+            const { status,msg } = await response; 
             if(status == 'success') {
                 loveIcon.classList.add('love');
             } else {
@@ -113,7 +114,7 @@ if(addComment) {
                 mangaId : id,
             }
         }
-        const urlReq = `${constant.baseUrl}/${type}/addComment`;
+        const urlReq =  constant.baseUrl + `${type}/addComment`;
         try {
             const response = await utils.httpRequest('POST',urlReq,bodyData);
             if(response.status == 'error') throw new Error(response.msg);
@@ -145,9 +146,9 @@ btnLoadEl.addEventListener('click',async function(e){
         id,
     };
     if( type === 'Anime' ) {
-        url = `${constant.baseUrl}/Comment/loadMoreAnime`;
+        url = `${constant.baseUrl}Comment/loadMoreAnime`;
     } else {
-        url = `${constant.baseUrl}/Comment/loadMoreManga`;
+        url = `${constant.baseUrl}Comment/loadMoreManga`;
     }
     try {
         const {error,data} = await utils.httpRequest('POST',url,bodyData);

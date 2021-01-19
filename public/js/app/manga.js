@@ -137,7 +137,9 @@ const mangaCardLove = (allManga) => {
                             <li>Serialization by : ${mangaList[0].serialization}</li>
                             <li>
                                 <div class="action">
-                                    <button>Detail</button>
+                                    <button>
+                                        <a href="${constant.baseUrl}Manga/show/${mangaList[0].id}"></a>
+                                    </button>
                                     <button class="remove-btn-manga" data-id="${mangaList[0].id}">Remove</button>
                                 </div>
                             </li>
@@ -163,7 +165,9 @@ const mangaCardLove = (allManga) => {
                         <li>Serialization by : ${mangaList[1].serialization}</li>
                         <li>
                             <div class="action">
-                                <button>Detail</button>
+                                <button>
+                                    <a href="${constant.baseUrl}Manga/show/${mangaList[1].id}"></a>
+                                </button>
                                 <button class="remove-btn-manga" data-id="${mangaList[1].id}">Remove</button>
                             </div>
                         </li>
@@ -190,7 +194,9 @@ const mangaCardLove = (allManga) => {
                     <li>Serialization by : ${mangaList[2].serialization}</li>
                     <li>
                         <div class="action">
-                            <button>Detail</button>
+                            <button>
+                                <a href="${constant.baseUrl}Manga/show/${mangaList[2].id}"></a>
+                            </button>
                             <button class="remove-btn-manga" data-id="${mangaList[2].id}">Remove</button>
                         </div>
                     </li>

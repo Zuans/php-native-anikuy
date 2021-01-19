@@ -124,6 +124,7 @@ const splitAnime = ( animes ) => {
 }
 
 const animeCardLove = (listAnime) => { 
+    const { constant } = module;
     const cardsList =  listAnime.map((animes,index) => {
         let cardList  = ' <div class="card-list-love">';
         // If array with index 0 exist make cardlove with class first
@@ -143,7 +144,9 @@ const animeCardLove = (listAnime) => {
                             <li>Status : ${animes[0].status}</li>
                             <li>
                                 <div class="action">
-                                    <button>Detail</button>
+                                    <button>
+                                        <a href="${constant.baseUrl}Anime/show/${animes[0].id}"></a>
+                                    </button>
                                     <button class="remove-btn-anime" data-id="${animes[0].id}">Remove</button>
                                 </div>
                             </li>
@@ -166,7 +169,9 @@ const animeCardLove = (listAnime) => {
                         <li>${animes[1].user}&nbsp; users</li>
                         <li>
                             <div class="action">
-                                <button>Detail</button>
+                                <button>
+                                    <a href="${constant.baseUrl}Anime/show/${animes[1].id}"></a>
+                                </button>
                                 <button class="remove-btn-anime" data-id="${animes[1].id}"">Remove</button>
                             </div>
                         </li>
@@ -190,7 +195,9 @@ const animeCardLove = (listAnime) => {
                     <li>${animes[2].user}&nbsp; users</li>
                     <li>
                         <div class="action">
-                            <button>Detail</button>
+                            <button>
+                                <a href="${constant.baseUrl}Anime/show/${animes[2].id}"></a>
+                            </button>
                             <button class="remove-btn-anime" data-id="${animes[2].user}">Remove</button>
                         </div>
                     </li>

@@ -117,6 +117,8 @@ const httpRequest = async (method,url,data) => {
         try {
             const response = await fetch(url,{
                 method : 'GET',
+                mode : 'same-origin',
+                credentials : 'same-origin',
                 headers : {
                     'Content-Type': 'application/json',
                 }

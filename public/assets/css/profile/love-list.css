@@ -88,6 +88,11 @@
     box-shadow: 0px 1px 5px rgba(29, 29, 29, 0.603);
 }
 
+.card-list-love > div .animanga-info .detail ul .action button a {
+    color : white;
+}
+
+
 .card-list-love > div .animanga-info .detail ul li .action button:hover {
     transform : translateY(4px);
 }

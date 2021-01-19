@@ -29,7 +29,9 @@
                                 <li>Status : <?= $animeLove[0]['status'] ?></li>
                                 <li>
                                     <div class="action">
-                                        <button>Detail</button>
+                                        <button>
+                                            <a href="<?= View::request('Anime/show/'.$animeLove[0]['id']);?>">Detail</a>
+                                        </button>
                                         <button class="remove-btn-anime" data-id="<?= $animeLove[0]['id']?>">Remove</button>
                                     </div>
                                 </li>
@@ -54,7 +56,9 @@
                             <li>Status : <?= $animeLove[1]['status'] ?></li>
                             <li>
                                 <div class="action">
-                                    <button>Detail</button>
+                                    <button>
+                                        <a href="<?= View::request('Anime/show/'.$animeLove[1]['id']);?>">Detail</a>
+                                    </button>
                                     <button class="remove-btn-anime" data-id="<?= $animeLove[1]['id']?>">Remove</button>
                                 </div>
                             </li>
@@ -79,7 +83,9 @@
                         <li>User : <?= $animeLove[0]['user'] ?></li>
                         <li>Status : <?= $animeLove[0]['status'] ?></li>
                         <li class="action">
-                            <button>Detail</button>
+                            <button>
+                                <a href="<?= View::request('Anime/show/'.$animeLove[1]['id']);?>">Detail</a>
+                            </button>
                             <button class="remove-btn-anime" data-id="<?= $animeLove[2]['id']?>">Remove</button>
                         </li>
                     </ul>
@@ -113,7 +119,9 @@
                             <li>Serialization by : <?= $mangaLove[0]['serialization'] ?></li>
                             <li>
                                 <div class="action">
-                                    <button>Detail</button>
+                                    <button>
+                                        <a href="<?= View::request('Manga/show/'.$mangaLove[0]['id']);?>">Detail</a>
+                                    </button>
                                     <button class="remove-btn-manga" data-id="<?= $mangaLove[0]['id']?>">Remove</button>
                                 </div>
                             </li>
@@ -138,7 +146,9 @@
                             <li>Serialization by :  <?= $mangaLove[1]['serialization']?> </li>
                             <li>
                                 <div class="action">
-                                    <button>Detail</button>
+                                    <button>
+                                        <a href="<?= View::request('Manga/show/'.$mangaLove[1]['id']);?>">Detail</a>
+                                    </button>
                                     <button class="remove-btn-manga" data-id="<?= $mangaLove[1]['id']?>">Remove</button>
                                 </div>
                             </li>
@@ -164,7 +174,9 @@
                         <li>Serialization by :  <?= $mangaLove[2]['serialization']?> </li>
                         <li>
                             <div class="action">
-                                <button>Detail</button>
+                                <button>
+                                    <a href="<?= View::request('Manga/show/'.$mangaLove[2]['id']);?>">Detail</a>
+                                </button>
                                 <button class="remove-btn-manga" data-id="<?= $mangaLove[2]['id']?>">Remove</button>
                             </div>
                         </li>

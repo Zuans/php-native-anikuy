@@ -351,8 +351,8 @@
 }
 
 .favorites-anime .card-list .card {
-    min-width: 17em;
-    max-width: 20em;
+    min-width: 10em;
+    max-width: 17.5em;
 }
 
 .anime-result .card-list .card h3 
@@ -417,8 +417,8 @@
 }
 
 .anime-result .card-list .card {
-    min-width: 50px;
-    max-width: 18em;
+    min-width: 10em;
+    max-width: 17.5em;
     min-height: 5rem;
     margin-left : 1rem;
 }

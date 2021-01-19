@@ -18,7 +18,7 @@
     
 
         public function add($userId,$mangaId) {
-            $query = "INSERT INTO $this->table(user_id,manga_id) VALUE (:user_id,:manga_id)";
+            $query = "INSERT INTO $this->table(user_id,manga_id) VALUE(:user_id,:manga_id)";
             $this->db->query($query);
             $this->db->bind(':user_id',$userId);
             $this->db->bind(':manga_id',$mangaId);

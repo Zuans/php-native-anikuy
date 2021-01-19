@@ -10,7 +10,6 @@ define(function(require) {
     const browser = require('./app/browser');
     const utils = require('./app/utils');
     const constant = require('./app/constant');
-    const navbar = require('./app/navbar');
     const anime = require('./app/anime');
     const manga = require('./app/manga');
     module.anime = anime;
@@ -18,15 +17,15 @@ define(function(require) {
     module.constant = constant;
     module.browser = browser;
     module.utils = utils;
-    module.navbar = navbar;
+    module.navbar = require('./app/navbar');
     return;
 });
 
-window.onload = () => {
-    const settNavbar = module.navbar.setNavbar;
-    settNavbar();
-}
 
+window.onload = () => {
+    const { navbar:Navbar } = module;
+    Navbar.setNavbar();
+}
 
 
 
