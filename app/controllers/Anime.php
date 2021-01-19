@@ -97,7 +97,7 @@ class Anime extends Controller {
             echo Helper::setSuccess('Love has been added');
             return; 
         } else {
-            echo Helper::setError();
+            echo Helper::setError('Error when add love',500);
             return;
         }
     }

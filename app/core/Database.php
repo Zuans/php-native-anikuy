@@ -18,13 +18,17 @@ class Database {
         try {
             $this->dbh = new PDO($dsn,$this->DB_USER,$this->DB_PASS);
         } catch(PDOException $e ) {
-            die($e->getMessage);
+            $this->handleSQLError($e->getMessage());
         }
     }
 
 
     public function query($query) {
-        $this->stmt = $this->dbh->prepare($query);
+        try {
+            $this->stmt = $this->dbh->prepare($query);
+        } catch(PDOException $e ) {
+            $this->handleSQLError($e->getMessage());
+        }
     }
 
     public function bind($key,$value,$type = null ) {
@@ -60,6 +64,10 @@ class Database {
 
     public function lastId() {
         return $this->dbh->lastInsertId();
+    }
+
+    public function handleSQLError($e) {
+        echo "Your Query Error:" . $e;
     }
 }
 

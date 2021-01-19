@@ -11,8 +11,13 @@ class Home extends Controller {
         try {
             $popularAnime = Anime::popularAnime();
             $url = 'https://kitsu.io/api/edge/anime?filter[status]=current&sort=-averageRating';
-            $allAnime = ApiRequest::httpRequest('GET',$url);
-            $allAnime = json_decode($allAnime)->data;
+            $response = ApiRequest::httpRequest('GET',$url);
+            $allAnime = json_decode($response)->data;
+            // If not get the data req again
+            if(property_exists($response,'data')) {
+                $response = ApiRequest::httpRequest('GET',$url);
+                $allAnime = json_decode($response)->data;
+            }
             $allAnime = Anime::set($allAnime);
             $this->view('home',[
                 'allAnime' => $allAnime,
@@ -24,12 +29,6 @@ class Home extends Controller {
         } 
     }
 
-
-
-
-    public function show($id) {
-        echo $id;
-    }
 }
 
 

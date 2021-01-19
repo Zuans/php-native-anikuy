@@ -5,7 +5,7 @@ require_once __DIR__ . '/core/Constant.php';
 
 function autoLoader() {
     spl_autoload_register(function($className) {
-        $appDirs = ['core','controllers','models'];
+        $appDirs = ['controllers','core','models'];
         $dirPath = __DIR__ . '/../app/';
         $className = str_replace('\\',DIRECTORY_SEPARATOR,$className);
         $ext = '.php';
@@ -17,11 +17,6 @@ function autoLoader() {
                 
             }
         }
-        // echo __DIR__ .  '/../app/core/' . $className . '.php' . '<br>';
-        // if(file_exists(__DIR__ .  '/../app/core/' . $className . '.php')) {
-        //     echo 'ada';
-        // }
-        // require_once __DIR__ .  '/../app/core/' . $className . '.php';
     });
 }
 ?>
