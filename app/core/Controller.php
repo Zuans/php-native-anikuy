@@ -68,12 +68,20 @@ class View extends Controller {
         self::$allCSS[] = $cssTag;
     }
 
-    public static function setJS($pathFile) {
+    public static function setAsyncJS($pathFile) {
         $ext = '.js';
         $pathFile = $pathFile . $ext;
         $url = BASE_URL . 'js/' . $pathFile;
         $requirePath = BASE_URL . 'js/require' . $ext;
         $jsTag =  "<script data-main='{$url}' src='$requirePath' async></script>";
+        self::$allJS[] = $jsTag;
+    }
+
+    public static function setJS($pathFile) {
+        $ext = '.js';
+        $pathFile = $pathFile . $ext;
+        $url = BASE_URL . 'js/' . $pathFile;
+        $jsTag =  "<script src='$url'></script>";
         self::$allJS[] = $jsTag;
     }
 
