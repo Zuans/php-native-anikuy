@@ -2,7 +2,9 @@
 <?= View::setCSS('footer');?>
 <?= View::setCSS('profile/love-list');?>
 
-<?= View::setJS('page/profile/loveList');?>
+<?= View::setJS('app/navbar');?>
+<?= View::setAsyncJS('page/profile/loveList');?>
+
 
 <?= View::build('templates/header')?>
 <?= View::build('templates/navbar');?>

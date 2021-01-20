@@ -3,7 +3,7 @@
 <?= View::setCSS('alert');?>
 <?= View::setCSS('profile/info'); ?>
 
-<? View::setJS('page/profile/info');?>
+<? View::setJS('app/navbar');?>
 
 
 <?= View::build('templates/header')?>
