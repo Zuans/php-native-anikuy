@@ -4,7 +4,8 @@
 <?= isset($popularAnime) ? View::setCSS('anime-home') : View::setCSS('manga-home'); ?>
 
 <!-- JS Declare -->
-<?= View::setJS('index'); ?>
+<?= View::setJS('app/navbar')?>
+<?= View::setAsyncJS('index'); ?>
 
 <!-- Build -->
 <?= View::build('templates/header') ?>
@@ -50,7 +51,7 @@
                 <form action="<?= View::request('Anime/search')?>" method="POST" class="anime-search" >
                     <div class="form-group">
                         <input type="text" id="anime-name" name="text" autocomplete="off"  required>
-                        <span class="input-label"  >Search Anime</span>
+                        <span class="input-label"  >Search Anime &nbsp; <i class="fas fa-search"></i></span>
                         <span class="underline"></span>
                     </div>
                     <div class="form-group">
@@ -121,7 +122,7 @@
                 <form action="<?= View::request('Manga/search')?>" method="POST" class="manga-search" >
                     <div class="form-group">
                         <input type="text" id="manga-name" name="text" autocomplete="off"  required>
-                        <span class="input-label"  >Search Manga</span>
+                        <span class="input-label"  >Search Manga &nbsp; <i class="fas fa-search"></i></span>
                         <span class="underline"></span>
                     </div>
                     <div class="form-group">
