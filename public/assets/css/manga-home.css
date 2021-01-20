@@ -95,6 +95,7 @@
 .manga-list h2 {
     text-align : center;
     color : #f5f5f5;
+    font-size : 1.7rem;
 }
 
 .manga-search {
@@ -225,7 +226,8 @@
 
 
 .favorites-manga  h1 {
-    color : #383636
+    color : #383636;
+    font-size : 1.7rem;
 }
 
 .favorites-manga .card-list .card:hover,
@@ -349,7 +351,7 @@
 }
 
 .favorites-manga .card-list .card {
-    min-width: 10em;
+    min-width: 15em;
     max-width: 17.5em;
 }
 
@@ -416,9 +418,9 @@
 
 .manga-result .card-list .card {
     min-width: 10em;
-    max-width: 17.5em;
+    max-width: 19em;
     min-height: 5rem;
-    margin-left : 1rem;
+    margin-left : 1.5rem;
 }
 
 .manga-synopsis {
@@ -461,6 +463,16 @@
     #body-manga .manga-list-wrapper .manga-list  {
         margin-left : 0;
         margin-top : 4rem;
+    }
+
+    .manga-result .card-list .card {
+        width: 17.5rem;
+        margin-left : 1.5rem;
+    }
+
+
+    .favorites-manga .card-list .card {
+        width: 17.5rem;
     }
 
 
