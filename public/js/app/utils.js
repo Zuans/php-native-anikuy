@@ -1,19 +1,6 @@
 
 
-const classNavbar  = () => {
-    const navbar = document.getElementById('navbar');
-    navbar.classList.remove('nav-mobile');
-    navbar.classList.remove('nav-tablet');
-    navbar.classList.remove('nav-desktop');
-    navbar.classList.remove('active');
-    if(clientType == 'desktop' ) {
-        navbar.classList.add('nav-desktop');
-    } else if ( clientType == 'tablet' ) {
-        navbar.classList.add('nav-tablet');
-    } else {
-        navbar.classList.add('nav-mobile');
-    }
-}
+
 
 
 const setFormData = (data) => {
@@ -194,7 +181,6 @@ const setAired = (startDate,endDate) => {
 
 
 define({
-    classNavbar,
     setFormData,
     alertError,
     animangaRequest,

@@ -7,43 +7,44 @@ const mangaRemoveBtn = document.querySelectorAll('.remove-btn-manga');
 define(function(require){
     const utils = require('../../app/utils');
     const constant = require('../../app/constant');
-    const navbar = require('../../app/navbar');
-    const browser = require('../../app/browser');
     const anime = require('../../app/anime');
     const manga = require('../../app/manga');
-    module.navbar = navbar;
     module.utils = utils;
     module.constant = constant;
-    module.browser = browser;
     module.anime = anime;
     module.manga = manga;
 });
 
-const utils = {};
+        // remove anime function
+        if(animeRemoveBtn) {
+            animeRemoveBtn.forEach( async(btn) => {
+                try {   
+                    btn.addEventListener('click',function(e) {
+                        const { 
+                            utils,
+                            anime 
+                        } = module;
+                        anime.removeAniList(e);
+                    });
+                } catch(err) {
+                    console.log(err);
+                }
+            });
+        }
 
-window.onload = () => {
-    module.navbar.setNavbar();
+        if(mangaRemoveBtn) {
+            mangaRemoveBtn.forEach( btn => {
+                btn.addEventListener('click',function(e) {
+                    const { 
+                        utils,
+                        manga,
+                    } =  module;
 
-    // remove anime function
-    animeRemoveBtn.forEach( btn => {
-        const { 
-            utils,
-            anime 
-        } = module;
-        btn.addEventListener('click',function(e) {
-            anime.removeAniList(e);
-        });
-    });
+                    manga.removeMagList(e);
+                });
+            });
+        }
 
-    mangaRemoveBtn.forEach( btn => {
-        const { 
-            manga,
-        } = module;
-        btn.addEventListener('click',function(e) {
-            manga.removeMagList(e);
-        });
-    });
-}
 
 
 

@@ -118,6 +118,7 @@ const splitManga = (allManga) => {
 }
 
 const mangaCardLove = (allManga) => {
+    const { constant } = module;
     const allCards = allManga.map(mangaList => {
         let cardList = `<div class="card-list-love">`
         // first cardList el
@@ -138,7 +139,7 @@ const mangaCardLove = (allManga) => {
                             <li>
                                 <div class="action">
                                     <button>
-                                        <a href="${constant.baseUrl}Manga/show/${mangaList[0].id}"></a>
+                                        <a href="${constant.baseUrl}Manga/show/${mangaList[0].id}">Detail</a>
                                     </button>
                                     <button class="remove-btn-manga" data-id="${mangaList[0].id}">Remove</button>
                                 </div>
@@ -166,7 +167,7 @@ const mangaCardLove = (allManga) => {
                         <li>
                             <div class="action">
                                 <button>
-                                    <a href="${constant.baseUrl}Manga/show/${mangaList[1].id}"></a>
+                                    <a href="${constant.baseUrl}Manga/show/${mangaList[1].id}">Detail</a>
                                 </button>
                                 <button class="remove-btn-manga" data-id="${mangaList[1].id}">Remove</button>
                             </div>
@@ -195,7 +196,7 @@ const mangaCardLove = (allManga) => {
                     <li>
                         <div class="action">
                             <button>
-                                <a href="${constant.baseUrl}Manga/show/${mangaList[2].id}"></a>
+                                <a href="${constant.baseUrl}Manga/show/${mangaList[2].id}">Detail</a>
                             </button>
                             <button class="remove-btn-manga" data-id="${mangaList[2].id}">Remove</button>
                         </div>
@@ -246,6 +247,7 @@ define({
     splitManga,
     removeMagList,
     setMangaCardLove,
+    mangaCardLove,
     mangaSetById,
     setMangaCard,
 });

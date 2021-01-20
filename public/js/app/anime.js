@@ -145,7 +145,7 @@ const animeCardLove = (listAnime) => {
                             <li>
                                 <div class="action">
                                     <button>
-                                        <a href="${constant.baseUrl}Anime/show/${animes[0].id}"></a>
+                                        <a href="${constant.baseUrl}Anime/show/${animes[0].id}">Detail</a>
                                     </button>
                                     <button class="remove-btn-anime" data-id="${animes[0].id}">Remove</button>
                                 </div>
@@ -163,19 +163,22 @@ const animeCardLove = (listAnime) => {
             <div class="animanga-info">
                 <img src="${animes[1].imgPoster}" alt="">
                 <div class="detail">
-                    <ul>
-                        <li>${animes[1].showType}</li>
-                        <li>${animes[1].rating}&nbsp; ratings</li>
-                        <li>${animes[1].user}&nbsp; users</li>
-                        <li>
-                            <div class="action">
-                                <button>
-                                    <a href="${constant.baseUrl}Anime/show/${animes[1].id}"></a>
-                                </button>
-                                <button class="remove-btn-anime" data-id="${animes[1].id}"">Remove</button>
-                            </div>
-                        </li>
-                    </ul>
+                <ul>
+                <li>${animes[1].showType}</li>
+                <li>Rating : ${animes[1].rating}</li>
+                <li>Age Rating : ${animes[1].ageRating}</li>
+                <li>Aired : ${animes[1].aired}</li>
+                <li>User : ${animes[1].user}</li>
+                <li>Status : ${animes[1].status}</li>
+                <li>
+                    <div class="action">
+                        <button>
+                            <a href="${constant.baseUrl}Anime/show/${animes[1].id}">Detail</a>
+                        </button>
+                        <button class="remove-btn-anime" data-id="${animes[1].id}">Remove</button>
+                    </div>
+                </li>
+            </ul>
                 </div>
             </div>
         </div>`
@@ -189,19 +192,22 @@ const animeCardLove = (listAnime) => {
             </div>
             <div class="animanga-info">
                 <div class="detail">
-                <ul>
-                    <li>${animes[2].showType}</li>
-                    <li>${animes[2].rating}&nbsp; ratings</li>
-                    <li>${animes[2].user}&nbsp; users</li>
-                    <li>
-                        <div class="action">
-                            <button>
-                                <a href="${constant.baseUrl}Anime/show/${animes[2].id}"></a>
-                            </button>
-                            <button class="remove-btn-anime" data-id="${animes[2].user}">Remove</button>
-                        </div>
-                    </li>
-                </ul>
+                    <ul>
+                        <li>${animes[2].showType}</li>
+                        <li>Rating : ${animes[2].rating}</li>
+                        <li>Age Rating : ${animes[2].ageRating}</li>
+                        <li>Aired : ${animes[2].aired}</li>
+                        <li>User : ${animes[2].user}</li>
+                        <li>Status : ${animes[2].status}</li>
+                        <li>
+                            <div class="action">
+                                <button>
+                                    <a href="${constant.baseUrl}Anime/show/${animes[2].id}">Detail</a>
+                                </button>
+                                <button class="remove-btn-anime" data-id="${animes[2].id}">Remove</button>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>`

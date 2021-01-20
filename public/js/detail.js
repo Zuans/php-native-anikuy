@@ -19,20 +19,12 @@ const btnLoad = {
 define(function(require){
     const utils = require('./app/utils');
     const constant = require('./app/constant');
-    const navbar = require('./app/navbar');
-    const browser = require('./app/browser');
     const comment = require('./app/comment');
     module.navbar = navbar;
     module.utils = utils;
     module.constant = constant;
-    module.browser = browser;
     module.comment = comment;
 });
-
-window.onload = () => {
-    const settNavbar = module.navbar.setNavbar;
-    settNavbar();
-}
 
 
 loveIcon.addEventListener('click',async function() {
@@ -129,39 +121,40 @@ if(addComment) {
     });
 }
 
-
-btnLoadEl.addEventListener('click',async function(e){
-    const { 
-        utils,
-        constant,
-        comment 
-    } = module;
-    btnLoad.click++;
-    let url = "";
-    const currntUrl = window.location.href.toString().split('/');
-    const type = currntUrl[currntUrl.length -3];
-    const id = currntUrl[currntUrl.length - 1];
-    const bodyData = {
-        totalLimit : btnLoad.limit * btnLoad.click,
-        id,
-    };
-    if( type === 'Anime' ) {
-        url = `${constant.baseUrl}Comment/loadMoreAnime`;
-    } else {
-        url = `${constant.baseUrl}Comment/loadMoreManga`;
-    }
-    try {
-        const {error,data} = await utils.httpRequest('POST',url,bodyData);
-        if(error) throw new Error(msg);
-        // If all data has loaded
-        if(data.allComment.length == data.totalData ) {
-            btnLoadEl.remove();
+if(btnLoadEl) {
+    btnLoadEl.addEventListener('click',async function(e){
+        const { 
+            utils,
+            constant,
+            comment 
+        } = module;
+        btnLoad.click++;
+        let url = "";
+        const currntUrl = window.location.href.toString().split('/');
+        const type = currntUrl[currntUrl.length -3];
+        const id = currntUrl[currntUrl.length - 1];
+        const bodyData = {
+            totalLimit : btnLoad.limit * btnLoad.click,
+            id,
         };
-        comment.delAllCard(commentList,'comment-card');
-        const newList = comment.setAllCard(data.allComment);
-        commentList.insertAdjacentHTML('afterbegin',newList);
-    } catch(err) {
-        console.log(err);
-    }
-    
-});
+        if( type === 'Anime' ) {
+            url = `${constant.baseUrl}Comment/loadMoreAnime`;
+        } else {
+            url = `${constant.baseUrl}Comment/loadMoreManga`;
+        }
+        try {
+            const {error,data} = await utils.httpRequest('POST',url,bodyData);
+            if(error) throw new Error(msg);
+            // If all data has loaded
+            if(data.allComment.length == data.totalData ) {
+                btnLoadEl.remove();
+            };
+            comment.delAllCard(commentList,'comment-card');
+            const newList = comment.setAllCard(data.allComment);
+            commentList.insertAdjacentHTML('afterbegin',newList);
+        } catch(err) {
+            console.log(err);
+        }
+        
+    });
+}

@@ -7,7 +7,6 @@ const titleContent = document.getElementById('title-content');
 const module  = {};
 
 define(function(require) {  
-    const browser = require('./app/browser');
     const utils = require('./app/utils');
     const constant = require('./app/constant');
     const anime = require('./app/anime');
@@ -15,17 +14,11 @@ define(function(require) {
     module.anime = anime;
     module.manga = manga;
     module.constant = constant;
-    module.browser = browser;
     module.utils = utils;
-    module.navbar = require('./app/navbar');
     return;
 });
 
 
-window.onload = () => {
-    const { navbar:Navbar } = module;
-    Navbar.setNavbar();
-}
 
 
 
