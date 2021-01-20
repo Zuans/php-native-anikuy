@@ -54,7 +54,7 @@
 }
 
 .error {
-    background-color: #18963e;
+    background-color: #c22f2f;
     color : white;
 }
 
@@ -189,9 +189,12 @@
 #comment-body  h1 {
     padding-bottom: 1rem;
     color : #eee3e3;
+    font-size : 1.7rem;
+    margin-bottom : 1rem;
 }
 
 #comment-body .comment-card {
+    margin-left : 2rem;
     background-color : #1a70a1;
     padding : 1rem 2rem;
     color : #eee3e3;
@@ -241,11 +244,14 @@
     padding : 1rem 0rem;
     position: relative;
     width : 50%;
+    margin-left : 2rem;
 }
 
 #comment-body .comment-input h3 {
+    margin-top : 1rem;
     padding-bottom : 1rem;
     color : #eee3e3;
+    font-size : 1.7rem;
 }
 
 
@@ -267,7 +273,7 @@
     color : #fefefe;
     cursor : pointer;
     z-index : 2;
-    right : 0;
+    right: 0;
     bottom : 1rem;
     outline : none;
     border : none;
@@ -277,6 +283,8 @@
 }
 
 #comment-body .not-authorized {
+    margin-top : 1rem;
+    margin-left : 1rem;
     color : #202020;
 }
 
@@ -327,7 +335,14 @@
         margin-bottom : 1rem;
     }
 
+    #comment-body .comment-card  {
+        margin : auto;
+        margin-bottom : 1.5rem;
+    }
+
     #comment-body .comment-input  {
         width : 100%;
+        margin-left: 0;
     }
+
 }
