@@ -5,7 +5,8 @@
 
 
 <!-- JS Declare -->
-<?= View::setJS('detail');?>
+<?= View::setJS('app/navbar')?>
+<?= View::setAsyncJS('detail');?>
 
 
 <!-- Build Template -->
