@@ -200,6 +200,7 @@
 #comment-body  h1 {
     padding-bottom: 1rem;
     color : #eee3e3;
+    font-size : 1.7rem;
 }
 
 #comment-body .comment-card {
@@ -235,11 +236,14 @@
     padding : 1rem 0rem;
     position: relative;
     width : 50%;
+    margin-left: 2rem;
 }
 
 #comment-body .comment-input h3 {
+    margin-top : 1rem;
     padding-bottom : 1rem;
     color : #eee3e3;
+    font-size : 1.7rem;
 }
 
 #comment-body .all-comments #btn-more-comnt {
@@ -280,6 +284,8 @@
 }
 
 #comment-body .not-authorized {
+    margin-top : 1rem;
+    margin-left : 1rem;
     color : #eee3e3;
     
 }
@@ -347,6 +353,7 @@
     }
 
     #comment-body .comment-input  {
-        width : 100%
+        width : 100%;
+        margin-left: 2rem;
     }
 }
